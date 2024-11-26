@@ -1,0 +1,143 @@
+{
+  "name": "Eric Zardo",
+  "role": "web developer",
+  "about": [
+    "I am a proactive and challenging person, who likes to go further, always ready to bring my technical skills to innovative projects.",
+    "Ready always ready to bring my technical skills to innovative projects"
+  ],
+  "techs": [
+    {
+      "name": "TypeScript",
+      "icon": "SiTypescript"
+    },
+    {
+      "name": "JavaScript",
+      "icon": "SiJavascript"
+    },
+    {
+      "name": "Node.js",
+      "icon": "SiNodedotjs"
+    },
+    {
+      "name": "React",
+      "icon": "SiReact"
+    },
+    {
+      "name": "Next",
+      "icon": "SiNextdotjs"
+    },
+    {
+      "name": "Tailwind CSS",
+      "icon": "SiTailwindcss"
+    },
+    {
+      "name": "Fastify",
+      "icon": "SiFastify"
+    },
+    {
+      "name": "Express",
+      "icon": "SiExpress"
+    },
+    {
+      "name": "Prisma",
+      "icon": "SiPrisma"
+    },
+    {
+      "name": "MySQL",
+      "icon": "SiMysql"
+    },
+    {
+      "name": "HTML",
+      "icon": "SiHtml5"
+    },
+    {
+      "name": "CSS",
+      "icon": "SiCss3"
+    },
+    {
+      "name": "Git",
+      "icon": "SiGit"
+    },
+    {
+      "name": "Docker",
+      "icon": "SiDocker"
+    },
+    {
+      "name": "Nginx",
+      "icon": "SiNginx"
+    },
+    {
+      "name": "Figma",
+      "icon": "SiFigma"
+    }
+  ],
+  "projects": [
+    {
+      "title": "chatt.on",
+      "description": [
+        "A chat application with real-time communication between users, containing private messages and group chats.",
+        "The main objective is to provide an interactive environment so that users can connect and communicate on different topics of interest."
+      ],
+      "image": "/project.webp",
+      "techs": [
+        {
+          "name": "JavaScript",
+          "icon": "SiJavascript"
+        },
+        {
+          "name": "React",
+          "icon": "SiReact"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "SiTailwindcss"
+        },
+        {
+          "name": "Node.js",
+          "icon": "SiNodedotjs"
+        },
+        {
+          "name": "Fastify",
+          "icon": "SiFastify"
+        },
+        {
+          "name": "Prisma",
+          "icon": "SiPrisma"
+        },
+        {
+          "name": "MySQL",
+          "icon": "SiMysql"
+        },
+        {
+          "name": "Git",
+          "icon": "SiGit"
+        },
+        {
+          "name": "Docker",
+          "icon": "SiDocker"
+        },
+        {
+          "name": "Nginx",
+          "icon": "SiNginx"
+        }
+      ]
+    }
+  ],
+  "socials": [
+    {
+      "name": "LinkedIn",
+      "url": "https://www.linkedin.com/in/eric-zardo-a53630228/",
+      "icon": "SiLinkedin"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/ericzardo",
+      "icon": "SiGithub"
+    },
+    {
+      "name": "Mail",
+      "url": "mailto:ericszardo@gmail.com",
+      "icon": "SiMaildotru"
+    }
+  ]
+}
