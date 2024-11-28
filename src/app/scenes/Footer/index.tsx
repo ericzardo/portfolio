@@ -1,9 +1,10 @@
 "use client";
 
-import { useCallback } from "react";
+import { useCallback, useLayoutEffect } from "react";
 import { SimpleIconName } from "@typess/types";
 
 import IconButton from "@components/layout/IconButton";
+import { ScrollAnimation, UnmountAnimations } from "./Animations";
 
 import portfolio from "@portfolio";
 
@@ -19,8 +20,16 @@ export default function FooterScene () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
+  useLayoutEffect(() => {
+    ScrollAnimation();
+
+    return () => {
+      UnmountAnimations();
+    };
+  }, []);
+
   return (
-    <div className="flex w-full flex-col items-center justify-between gap-4 bg-50 px-6 py-10 shadow-shadow sm:flex-row sm:px-8 sm:py-16 md:px-16 lg:px-24 xl:px-48">
+    <div id="footer-section" className="flex w-full flex-col items-center justify-between gap-4 bg-50 px-6 py-10 shadow-shadow sm:flex-row sm:px-8 sm:py-16 md:px-16 lg:px-24 xl:px-48">
       <span className="flex w-full flex-1 flex-col gap-2.5">
         <p className="select-text text-xs font-medium text-950 sm:text-sm md:text-base">{name}</p>
         <p className="select-none text-[10px] text-700 sm:text-xs md:text-sm">Copyright © 2024. All rights reserved.</p>
@@ -33,7 +42,7 @@ export default function FooterScene () {
           ))}
         </span>
         <span className="cursor-pointer" onClick={goTop}>
-          <p className="text-end text-xs text-700 sm:text-sm md:text-base">Back to Top</p>
+          <p className="text-end text-xs text-700 transition-all duration-300 ease-linear hover:scale-95 hover:text-900 sm:text-sm md:text-base">Back to Top</p>
         </span>
       </div>
     </div>

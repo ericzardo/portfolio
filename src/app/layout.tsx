@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
+
 import type { Metadata } from 'next';
-import { ReactNode } from 'react';
 import { Comfortaa } from 'next/font/google';
+import { ReactNode } from 'react';
 import './globals.css';
 
 const comfortaa = Comfortaa({ subsets: ['latin'] });
@@ -17,7 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${comfortaa.className} w-screen scroll-smooth antialiased`}>{children}</body>
+      <body className={`${comfortaa.className} relative w-screen scroll-smooth antialiased`}>
+        <div id='background'></div>
+        {children}
+      </body>
     </html>
   );
 }

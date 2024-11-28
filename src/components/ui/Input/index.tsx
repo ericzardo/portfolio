@@ -1,10 +1,4 @@
-/**
- * 
- * Resume Component here
- * 
- */
-
-import {
+import {  
   InputHTMLAttributes,
   TextareaHTMLAttributes,
   ReactElement,
@@ -33,6 +27,7 @@ export default function Input({
   icon,
   placeholder,
   error,
+  id,
   area = false,
   ...props
 }: InputProps) {
@@ -45,6 +40,7 @@ export default function Input({
 
   return (
     <div
+      id={id}
       onClick={handleInputClick}
       className={`px3 m:py-2.5 sm:3.5 flex w-full max-w-[400px] cursor-text justify-start
       gap-2.5 overflow-hidden rounded-lg border border-200 bg-50 px-3 py-2 shadow-little transition-colors ease-in-out focus-within:border-400 md:px-4 md:py-3

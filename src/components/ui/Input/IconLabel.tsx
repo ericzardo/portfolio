@@ -1,9 +1,3 @@
-/**
- * 
- * Resume Component here
- * 
- */
-
 import { ReactElement, cloneElement } from "react";
 
 interface IconLabelProps {

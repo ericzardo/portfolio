@@ -1,9 +1,3 @@
-/**
- * 
- * Resume Component here
- * 
- */
-
 import { SimpleIconName } from "@typess/types";
 
 import Icon from "@components/Icon";
@@ -17,9 +11,9 @@ export default function IconButton({ icon, onClick }: IconButtonProps) {
   return (
     <div
       onClick={onClick}
-      className="flex size-8 cursor-pointer items-center justify-center rounded-lg bg-100 p-1.5 shadow-little sm:size-9 md:size-10 md:p-2"
+      className="flex size-8 cursor-pointer items-center justify-center rounded-lg bg-100 p-1.5 text-800 shadow-little transition-all duration-300 ease-out hover:scale-75 hover:bg-800 hover:text-200 sm:size-9 md:size-10 md:p-2"
     >
-      <Icon name={icon} className="size-full text-800" />
+      <Icon name={icon} className="size-full " />
     </div>
   );
 }

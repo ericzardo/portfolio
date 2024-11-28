@@ -43,6 +43,19 @@ export default {
       boxShadow: {
         'little': 'var(--box-shadow-little)',
         'shadow': 'var(--box-shadow)',
+      },
+      animation: {
+        'clicked': "clicked 300ms ease-out",
+      },
+      keyframes: {
+        'clicked': {
+          "0%, 100%": { 
+            scale: "1",
+          },
+          "50%": { 
+            scale: "1.2",
+          },
+        }
       }
     },
   },

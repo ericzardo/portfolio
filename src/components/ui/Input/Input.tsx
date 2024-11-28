@@ -1,9 +1,3 @@
-/**
- * 
- * Resume Component here
- * 
- */
-
 import { RefObject } from "react";
 
 interface TextInputProps {

@@ -1,11 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 
-/**
- * 
- * Resume Component here
- * 
- */
-
 interface ProjectPreview {
   title: string;
   description: string;

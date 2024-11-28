@@ -1,10 +1,3 @@
-
-/**
- * 
- * Resume Component here
- * 
- */
-
 import { Tech } from "@typess/types";
 
 import IconCard from "@components/layout/IconCard";

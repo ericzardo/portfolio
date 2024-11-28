@@ -1,31 +1,44 @@
 /* eslint-disable @next/next/no-img-element */
-"use client";
 
-/**
- * 
- * Resume Component here
- * 
- */
+"use client";
 
 import { useCallback } from "react";
 import { Social } from "@typess/types";
 
 import IconCard from "@components/layout/IconCard";
+import { onHover, onHoverOut } from "./Animation";
 
 interface ApresentationProps {
   about: string[];
-  socials: Social[]
+  socials: Social[];
+  handleGallery: () => void;
 }
 
-export default function Apresentation({ about, socials }: ApresentationProps) {
-
+export default function Apresentation({ about, socials, handleGallery }: ApresentationProps) {
   const openSocial = useCallback((url: string) => {
     window.open(url, '_blank');
   }, []);
 
+  const handleHover = useCallback(() => {
+    onHover();
+  }, []);
+
+  const handleHoverOut = useCallback(() => {
+    onHoverOut();
+  }, []);
+
   return (
-      <div className="min-[820px]:flex-row flex w-fit flex-col items-center justify-between gap-3 rounded-lg bg-100 p-5 shadow-shadow">
-      <div className="w-full max-w-[300px] shrink-0 select-none overflow-hidden rounded-xl shadow-shadow md:max-w-[350px]">
+    <div
+      id="me-modal"
+      className="flex w-fit flex-col items-center justify-between gap-3 rounded-lg bg-100 p-5 shadow-shadow min-[820px]:flex-row"
+    >
+      <div
+        id="me-image"
+        onMouseEnter={handleHover}
+        onMouseLeave={handleHoverOut}
+        onClick={handleGallery}
+        className="w-full max-w-[300px] shrink-0 cursor-pointer select-none overflow-hidden rounded-xl bg-cover bg-center shadow-shadow md:max-w-[350px]"
+      >
         <img
           src="/me.jpg"
           alt="Eric Zardo's photo apresentation"

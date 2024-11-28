@@ -1,9 +1,3 @@
-/**
- * 
- * Resume Component here
- * 
- */
-
 import { useCallback, RefObject, useEffect } from "react";
 
 interface TextAreaProps {

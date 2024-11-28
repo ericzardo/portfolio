@@ -1,10 +1,3 @@
-
-/**
- * 
- * Resume Component here
- * 
- */
-
 import { ComponentType, SVGProps } from 'react';
 import * as Icons from '@icons-pack/react-simple-icons';
 
