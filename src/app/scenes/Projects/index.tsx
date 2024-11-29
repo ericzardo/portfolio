@@ -1,21 +1,23 @@
 "use client";
 
 import { useLayoutEffect } from "react";
-
-import { Tech } from "@typess/types";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
 
 import TagText from "@components/layout/TagText";
-import InfosCard from "./InfosCard";
-import PreviewCard from "./PreviewCard";
+import ProjectCard from "./Card";
 import { ScrollAnimation, UnmountAnimations } from "./Animations";
 
 import portfolio from "@portfolio";
+import { Project } from "@typess/types";
 
 
 export default function ProjectsScene({}) {
   const { projects } = portfolio;
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     ScrollAnimation();
 
     return () => {
@@ -32,12 +34,9 @@ export default function ProjectsScene({}) {
     >
       <TagText id="projects-title">projects</TagText>
 
-      <div id="projects" className="my-10 flex w-full flex-wrap items-end justify-end gap-10">
+      <div id="projects" className="my-10 flex w-full items-end justify-end gap-10">
         {projects.map(p => (
-          <PreviewCard key={p.title} title={p.title} description={p.description[0]} />
-        ))}
-        {projects.map(p => (
-          <InfosCard key={p.title} title={p.title} description={p.description} techs={p.techs as Tech[]} />
+          <ProjectCard key={p.title} project={p as Project} />
         ))}
       </div>
 

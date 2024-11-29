@@ -1,12 +1,17 @@
 "use client";
 
 import { useCallback, useLayoutEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+
 import { SimpleIconName } from "@typess/types";
 
+import Link from "next/link";
 import IconButton from "@components/layout/IconButton";
 import { ScrollAnimation, UnmountAnimations } from "./Animations";
 
 import portfolio from "@portfolio";
+
 
 export default function FooterScene () {
   const { name, socials } = portfolio;
@@ -15,12 +20,9 @@ export default function FooterScene () {
     window.open(url, '_blank');
   }, []);
 
-
-  const goTop = useCallback(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, []);
-
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     ScrollAnimation();
 
     return () => {
@@ -41,9 +43,9 @@ export default function FooterScene () {
             <IconButton key={s.name} icon={s.icon as SimpleIconName} onClick={() => openSocial(s.url)} />
           ))}
         </span>
-        <span className="cursor-pointer" onClick={goTop}>
-          <p className="text-end text-xs text-700 transition-all duration-300 ease-linear hover:scale-95 hover:text-900 sm:text-sm md:text-base">Back to Top</p>
-        </span>
+        <Link href="" className="cursor-pointer">
+          <p className="text-end text-xs text-700 transition-all duration-300 ease-linear hover:text-900 hover:scale-95 sm:text-sm md:text-base">Back to Top</p>
+        </Link>
       </div>
     </div>
   );

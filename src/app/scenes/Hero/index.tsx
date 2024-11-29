@@ -1,6 +1,8 @@
 "use client";
 
 import { useLayoutEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
 
 import TagText from "@components/layout/TagText";
 import { ScrollAnimation } from "./Animations";
@@ -11,6 +13,8 @@ export default function HeroScene() {
   const { name, role } = portfolio;
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    
     ScrollAnimation();
   }, []);
 

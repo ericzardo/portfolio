@@ -2,34 +2,34 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const ScrollAnimation = () => {
-  gsap.registerPlugin(ScrollTrigger);
+  const triggerSection: gsap.DOMTarget | ScrollTrigger.Vars = {
+    trigger: "#me-section",
+    start: "-30% 40%",
+    end: "bottom 60%",
+    scrub: 1.6,
+    markers: false,
+  };
 
   gsap.fromTo(
     "#me-title",
-    { x: 150, opacity: 0.6 },
+    { x: "40%", opacity: 0.6 },
     {
       x: 0,
       opacity: 1,
-      scrollTrigger: {
-        trigger: "#me-section",
-        start: "-30% 40%",
-        end: "bottom 60%",
-        scrub: 1.6,
-        markers: false,
-      },
+      scrollTrigger: triggerSection,
     }
   );
 
   gsap.fromTo(
     "#me-modal",
-    { x: 200, scale: 1.1 },
+    { x: "30%", scale: 1.1 },
     {
       x: 0,
       scale: 1,
       scrollTrigger: {
-        trigger: "#me-section",
-        start: "-20% 40%",
-        end: "110% 60%",
+        trigger: "#me-modal",
+        start: "-30% 40%",
+        end: "bottom 60%",
         scrub: 1.6,
         markers: false,
       },
@@ -41,13 +41,7 @@ export const ScrollAnimation = () => {
     { scale: 1.20 },
     {
       scale: 1,
-      scrollTrigger: {
-        trigger: "#me-section",
-        start: "-20% 40%",
-        end: "110% 60%",
-        scrub: 1.6,
-        markers: false,
-      },
+      scrollTrigger: triggerSection,
     }
   );
 };

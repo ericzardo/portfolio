@@ -1,16 +1,12 @@
 "use client";
 
-/**
- * 
- * Resume Component here
- * 
- */
-
 import { useState, useCallback, useLayoutEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
 
 import TagText from "@components/layout/TagText";
 import IconCard from "@components/layout/IconCard";
-import { UnmountAnimations, ScrollAnimation, Looping } from "./Animations";
+import { UnmountAnimations, ScrollAnimation, Looping, loopingTween } from "./Animations";
 
 import portfolio from "@portfolio";
 import { SimpleIconName } from "@typess/types";
@@ -25,10 +21,15 @@ export default function TechsScene({}) {
   }, []);
 
   useLayoutEffect(() => {
-    ScrollAnimation();
+    gsap.registerPlugin(ScrollTrigger);
 
+    ScrollAnimation();
+  
     if (isLooping) {
-      Looping();
+      Looping(isLooping);
+      if (loopingTween) loopingTween.play();
+    } else if (loopingTween) {
+      loopingTween.pause();
     }
   
     return () => {

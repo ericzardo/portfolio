@@ -1,14 +1,11 @@
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const ScrollAnimation = () => {
-  gsap.registerPlugin(ScrollTrigger);
-
   gsap.fromTo(
     "#hero-status",
     { x: 0 },
     {
-      x: 75,
+      x: "5%",
       scrollTrigger: {
         trigger: "#hero-section",
         start: "top top",
@@ -23,7 +20,7 @@ export const ScrollAnimation = () => {
     "#hero-apresentation",
     { x: 0 },
     {
-      x: 85,
+      x: "10%",
       scrollTrigger: {
         trigger: "#hero-section",
         start: "top top",
@@ -38,7 +35,7 @@ export const ScrollAnimation = () => {
     "#hero-role",
     { x: 0 },
     {
-      x: 95,
+      x: "15%",
       scrollTrigger: {
         trigger: "#hero-section",
         start: "top top",

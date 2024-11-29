@@ -14,7 +14,7 @@ export default function ProjectInfos({ title, description, techs }: ProjectInfos
   const remainingTechs = techs.length - techsPreviewCount;
 
   return (
-    <div className="flex max-h-[400px] max-w-[400px] flex-col justify-between gap-5 overflow-hidden rounded-xl bg-100 px-5 py-8 shadow-shadow">
+    <div className="flex size-full max-h-[400px] max-w-[400px] flex-col justify-between gap-5 overflow-hidden rounded-xl bg-100 px-5 py-8 shadow-shadow">
 
       <div className="flex flex-col gap-4">
         <h2 className="text-sm font-medium text-900 underline decoration-primary-blue sm:text-base md:text-md">{title}</h2>

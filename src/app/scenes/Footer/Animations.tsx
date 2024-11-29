@@ -2,8 +2,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const ScrollAnimation = () => {
-  gsap.registerPlugin(ScrollTrigger);
-
   gsap.fromTo(
     "#footer-section",
     { y: 100, opacity: 0, filter: "blur(10px)", scale: 0.9 },

@@ -15,9 +15,9 @@ export default function IconCard({ name, icon, onClick, small = false }: IconCar
   return (
     <div
       onClick={onClick}
-      className={`flex items-center justify-center gap-2 rounded-lg bg-300 text-900 shadow-little transition-all duration-300 ease-linear
+      className={`flex items-center justify-center gap-2 rounded-lg bg-300 text-900 shadow-little transition-all duration-300 ease-out
       ${small ? "px-2 py-0.5 sm:px-2.5 sm:py-1" : "px-3 py-1.5 sm:px-4 sm:py-2"}
-      ${onClick ? "cursor-pointer  hover:scale-105 hover:bg-900 hover:text-100" : "cursor-default"}`}
+      ${onClick ? "cursor-pointer  hover:bg-900 hover:text-100 hover:scale-90" : "cursor-default"}`}
     >
       <Icon
         name={icon}

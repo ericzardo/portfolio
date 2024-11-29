@@ -1,5 +1,7 @@
 import type { Config } from 'tailwindcss';
 
+import tailwindcss3d from "tailwindcss-3d";
+
 export default {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -56,8 +58,11 @@ export default {
             scale: "1.2",
           },
         }
-      }
+      },
+      perspective: {
+        '1000': '1000px',
+      },
     },
   },
-  plugins: [],
+  plugins: [tailwindcss3d],
 } satisfies Config;

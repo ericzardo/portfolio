@@ -1,6 +1,8 @@
 "use client";
 
 import { useLayoutEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
 
 import TagText from "@components/layout/TagText";
 import Form from "./Form";
@@ -9,6 +11,8 @@ import { ScrollAnimation, UnmountAnimations } from "./Animations";
 export default function TalkScene() {
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     ScrollAnimation();
 
     return () => {

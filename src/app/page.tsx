@@ -15,25 +15,20 @@ export default function Home() {
   const mainRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    let locomotiveScroll: LocomotiveScroll;
 
     const initLocomotiveScroll = async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
 
       if (!mainRef.current) return;
 
-      locomotiveScroll = new LocomotiveScroll({
-        multiplier: 1.3
+      const locomotive = new LocomotiveScroll({
+        multiplier: 1.4,
       });
 
-      locomotiveScroll.update();
+      locomotive.update();
     };
 
     initLocomotiveScroll();
-
-    return () => {
-      if (locomotiveScroll) locomotiveScroll.destroy();
-    };
   }, []);
 
   return (

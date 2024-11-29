@@ -1,6 +1,8 @@
 "use client";
 
 import { useCallback, useLayoutEffect, useState } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
 
 import { Social } from "@typess/types";
 
@@ -21,6 +23,8 @@ export default function MeScene() {
   }, []);
 
   useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     ScrollAnimation();
 
     return () => {
@@ -38,7 +42,7 @@ export default function MeScene() {
       >
         <TagText id="me-title">me</TagText>
 
-        <div className="my-10 flex w-full gap-10">
+        <div className="mt-10 flex w-full gap-10">
           <Apresentation
             about={about}
             socials={socials as Social[]}

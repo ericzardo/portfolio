@@ -1,10 +1,9 @@
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-let loopingTween: gsap.core.Tween | null = null;
+export let loopingTween: gsap.core.Tween | null = null;
 
-
-export const Looping = () => {
+export const Looping = (isLooping: boolean = false) => {
   const techs = document.querySelector<HTMLDivElement>("#techs");
 
   if (!techs) return;
@@ -15,33 +14,38 @@ export const Looping = () => {
 
   if (loopingTween) loopingTween.kill();
 
-  const currentX = gsap.getProperty(techs, "x") as number;
-
   loopingTween = gsap.to(techs, {
-    x: currentX - containerWidth,
+    x: `-=${containerWidth}`,
     duration: duration,
     ease: "linear",
     repeat: -1,
-    onRepeat: () => {
-      techs.style.transition = "none";
-      techs.style.transform = "translateX(0)";
-      requestAnimationFrame(() => {
-        techs.style.transition = "transform 0s linear";
-      });
-    },
+    paused: !isLooping,
   });
 };
 
 export const UnmountAnimations = () => {
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-};
+  const triggers = ScrollTrigger.getAll();
+  triggers.forEach((trigger) => {
+    if (trigger.vars.trigger === "#techs-section") {
+      trigger.kill();
+    }
+  });
 
-export const KillAnimations = () => {
-  gsap.killTweensOf("#techs");
+
+  if (loopingTween) {
+    loopingTween.kill();
+    loopingTween = null;
+  }
 };
 
 export const ScrollAnimation = () => {
-  gsap.registerPlugin(ScrollTrigger);
+  const triggerSection: gsap.DOMTarget | ScrollTrigger.Vars = {
+    trigger: "#techs-section",
+    start: "-20% 40%",
+    end: "110% 60%",
+    scrub: 1.6,
+    markers: false,
+  };
 
   const techs = document.querySelector<HTMLDivElement>("#techs");
 
@@ -52,33 +56,24 @@ export const ScrollAnimation = () => {
 
   gsap.fromTo(
     "#techs-title",
-    { x: -150, opacity: 0.6 },
+    { x: "-20%", opacity: 0.6 },
     {
       x: 0,
       opacity: 1,
-      scrollTrigger: {
-        trigger: "#techs-section",
-        start: "-20% 40%",
-        end: "110% 60%",
-        scrub: 1.6,
-        markers: false,
-      },
+      scrollTrigger: triggerSection,
     }
   );
 
   gsap.to(techs, {
-    x: () => (currentX - containerWidth) * 0.5,
+    x: () => (currentX - containerWidth) * 0.2,
     ease: "linear",
     scrollTrigger: {
-      trigger: "#techs-section",
-      start: "-20% 40%",
-      end: "110% 60%",
-      scrub: 1.6,
-      markers: false,
-      onUpdate: (self) => {
-        const progress = self.progress;
-        const newX = (currentX - containerWidth) * progress * 0.5;
-        gsap.set(techs, { x: newX });
+      ...triggerSection,
+      id: "techs-scroll",
+      onUpdate: () => {
+        if (loopingTween && loopingTween.isActive()) {
+          loopingTween.pause();
+        }
       },
       onEnter: () => {
         if (loopingTween) loopingTween.pause();
@@ -87,7 +82,6 @@ export const ScrollAnimation = () => {
         if (loopingTween) loopingTween.resume();
       },
       onEnterBack: () => {
-
         if (loopingTween) loopingTween.pause();
       },
       onLeaveBack: () => {

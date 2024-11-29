@@ -2,11 +2,10 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export const ScrollAnimation = () => {
-  gsap.registerPlugin(ScrollTrigger);
 
   gsap.fromTo(
     "#talk-title",
-    { x: 150, opacity: 0.6 },
+    { x: "40%", opacity: 0.6 },
     {
       x: 0,
       opacity: 1,
@@ -22,7 +21,7 @@ export const ScrollAnimation = () => {
 
   gsap.fromTo(
     "#talk-modal",
-    { x: 200, opacity: 0.6 },
+    { x: "30%", opacity: 0.6 },
     {
       x: 0,
       opacity: 1,

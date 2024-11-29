@@ -7,7 +7,7 @@ interface ProjectPreview {
 
 export default function ProjectPreview({ title, description }: ProjectPreview) {
   return (
-    <div className="relative max-h-[400px] max-w-[400px] overflow-hidden rounded-xl shadow-shadow">
+    <div className="relative size-full overflow-hidden rounded-xl shadow-shadow">
       <img src="/project.webp" alt="Project preview image as background" className="size-full select-none object-cover" />
       
 
