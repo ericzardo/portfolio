@@ -5,6 +5,13 @@
     "I am a proactive and challenging person, who likes to go further, always ready to bring my technical skills to innovative projects.",
     "Ready always ready to bring my technical skills to innovative projects"
   ],
+  "quote": {
+    "phrase": [
+      "I don't stop when I'm tired.",
+      "I stop when I'm done."
+    ],
+    "author": "David Goggins"
+  },
   "techs": [
     {
       "name": "TypeScript",
@@ -78,7 +85,7 @@
         "A chat application with real-time communication between users, containing private messages and group chats.",
         "The main objective is to provide an interactive environment so that users can connect and communicate on different topics of interest."
       ],
-      "image": "/project.webp",
+      "image": "chatt.on.png",
       "techs": [
         {
           "name": "JavaScript",
@@ -120,7 +127,141 @@
           "name": "Nginx",
           "icon": "SiNginx"
         }
-      ]
+      ],
+      "date": {
+        "from": "03/2024",
+        "to": "present"
+      },
+      "features": [
+        "Account creation and authentication",
+        "Participation in group conversations in rooms",
+        "\"Whisper\" option for private conversations",
+        "User profiles with information editing",
+        "Switch between light and dark theme",
+        "Exclusive administration page",
+        "Management of permissions, roles, themes, and chats"
+      ],
+      "note": "is in BETA version"
+    },
+    {
+      "title": "plann.er",
+      "description": [
+        "The project consists of developing a collaborative travel platform called 'plann.er'.",
+        "The primary goal was to create an intuitive and engaging interface that simplifies the travel planning process and ensures all trip details are easily accessible."
+      ],
+      "image": "plann.er.png",
+      "techs": [
+        {
+          "name": "TypeScript",
+          "icon": "SiTypescript"
+        },
+        {
+          "name": "React",
+          "icon": "SiReact"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "SiTailwindcss"
+        }
+      ],
+      "date": {
+        "from": "07/2024",
+        "to": null
+      },
+      "features": [
+        "Account creation and authentication",
+        "Participation in group conversations in rooms",
+        "\"Whisper\" option for private conversations",
+        "User profiles with information editing",
+        "Switch between light and dark theme",
+        "Exclusive administration page",
+        "Management of permissions, roles, themes, and chats"
+      ],
+      "note": "is in BETA version"
+    },
+    {
+      "title": "Routine App",
+      "description": [
+        "Personal project developed with the goal of improving my daily personal activities.",
+        "It had alarm and document management features."
+      ],
+      "image": "routine.app.png",
+      "techs": [
+        {
+          "name": "Node.js",
+          "icon": "SiNodedotjs"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "SiTypescript"
+        },
+        {
+          "name": "ReactNative",
+          "icon": "SiReact"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "SiTailwindcss"
+        },
+        {
+          "name": "Fastify",
+          "icon": "SiFastify"
+        },
+        {
+          "name": "MySQL",
+          "icon": "SiMysql"
+        }
+      ],
+      "date": {
+        "from": "09/2024",
+        "to": "10/2024"
+      },
+      "features": [
+        "Account creation and authentication",
+        "Participation in group conversations in rooms",
+        "\"Whisper\" option for private conversations",
+        "User profiles with information editing",
+        "Switch between light and dark theme",
+        "Exclusive administration page",
+        "Management of permissions, roles, themes, and chats"
+      ],
+      "note": "is in BETA version"
+    },
+    {
+      "title": "Ebook LP",
+      "description": [
+        "The project aimed to create an attractive and functional landing page for the 'Mergulhe nas Profundezas do Conhecimento (Dive into the Depths of Knowledge)' e-book",
+        "Its primary goal was to effectively communicate the essence of the e-book and persuade visitors to take action."
+      ],
+      "image": "ebook.lp.png",
+      "techs": [
+        {
+          "name": "JavaScript",
+          "icon": "SiJavascript"
+        },
+        {
+          "name": "HTML",
+          "icon": "SiHtml5"
+        },
+        {
+          "name": "CSS",
+          "icon": "SiCss3"
+        }
+      ],
+      "date": {
+        "from": "01/2024",
+        "to": "04/2024"
+      },
+      "features": [
+        "Account creation and authentication",
+        "Participation in group conversations in rooms",
+        "\"Whisper\" option for private conversations",
+        "User profiles with information editing",
+        "Switch between light and dark theme",
+        "Exclusive administration page",
+        "Management of permissions, roles, themes, and chats"
+      ],
+      "note": "is in BETA version"
     }
   ],
   "socials": [

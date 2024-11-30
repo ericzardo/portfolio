@@ -1,9 +1,9 @@
-"use cleint";
+'use cleint'
 
-import { useLayoutEffect } from "react";
+import { useLayoutEffect } from 'react'
 
-import { X } from "lucide-react";
-import { GalleryAnimation } from "./Animation";
+import { X } from 'lucide-react'
+import { GalleryAnimation } from './Animations'
 
 interface GalleryProps {
   handleGallery: () => void;
@@ -12,8 +12,8 @@ interface GalleryProps {
 export default function Gallery ({ handleGallery }: GalleryProps) {
 
   useLayoutEffect(() => {
-    GalleryAnimation();
-  }, []);
+    GalleryAnimation()
+  }, [])
 
   return (
     <div
@@ -22,10 +22,10 @@ export default function Gallery ({ handleGallery }: GalleryProps) {
     >
       <span
         onClick={handleGallery}
-        className="absolute right-2.5 top-2.5 max-h-7 max-w-7 cursor-pointer transition-all duration-300 ease-out hover:scale-125 hover:opacity-65"
+        className="absolute right-2.5 top-2.5 max-h-7 max-w-7 cursor-pointer transition-all duration-300 ease-out hover:opacity-65 hover:scale-125"
       >
         <X className="size-full text-error"/>
       </span>
     </div>
-  );
+  )
 }

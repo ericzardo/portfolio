@@ -1,6 +1,6 @@
-import { SimpleIconName } from "@typess/types";
+import { SimpleIconName } from '@typess/types'
 
-import Icon from "@components/Icon";
+import Icon from '@components/Icon'
 
 interface IconButtonProps {
   icon: SimpleIconName;
@@ -15,5 +15,5 @@ export default function IconButton({ icon, onClick }: IconButtonProps) {
     >
       <Icon name={icon} className="size-full " />
     </div>
-  );
+  )
 }

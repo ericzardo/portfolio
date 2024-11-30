@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import { useLayoutEffect } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
+import { useLayoutEffect } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import gsap from 'gsap'
 
-import TagText from "@components/layout/TagText";
-import { ScrollAnimation } from "./Animations";
+import TagText from '@components/layout/TagText'
+import { ScrollAnimation } from './Animations'
 
-import portfolio from "@portfolio";
+import portfolio from '@portfolio'
 
 export default function HeroScene() {
-  const { name, role } = portfolio;
+  const { name, role } = portfolio
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger)
     
-    ScrollAnimation();
-  }, []);
+    ScrollAnimation()
+  }, [])
 
   return (
     <section
@@ -37,5 +37,5 @@ export default function HeroScene() {
 
       <TagText id="hero-role">{role}</TagText>
     </section>
-  );
+  )
 }

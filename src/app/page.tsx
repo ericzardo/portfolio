@@ -1,35 +1,35 @@
-"use client";
+'use client'
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef } from 'react'
 
-import HeroScene from "./scenes/Hero";
-import ProjectsScene from "./scenes/Projects";
-import MeScene from "./scenes/Me";
-import TechsScene from "./scenes/Techs";
-import QuoteScene from "@scenes/Quote";
-import TalkScene from "@scenes/Talk";
-import FooterScene from "@scenes/Footer";
+import HeroScene from './scenes/Hero'
+import ProjectsScene from './scenes/Projects'
+import MeScene from './scenes/Me'
+import TechsScene from './scenes/Techs'
+import QuoteScene from '@scenes/Quote'
+import TalkScene from '@scenes/Talk'
+import FooterScene from '@scenes/Footer'
 
 
 export default function Home() {
-  const mainRef = useRef<HTMLElement>(null);
+  const mainRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
 
     const initLocomotiveScroll = async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const LocomotiveScroll = (await import('locomotive-scroll')).default
 
-      if (!mainRef.current) return;
+      if (!mainRef.current) return
 
       const locomotive = new LocomotiveScroll({
         multiplier: 1.4,
-      });
+      })
 
-      locomotive.update();
-    };
+      locomotive.update()
+    }
 
-    initLocomotiveScroll();
-  }, []);
+    initLocomotiveScroll()
+  }, [])
 
   return (
     <main ref={mainRef} className="flex w-full flex-col items-center justify-center">
@@ -41,5 +41,5 @@ export default function Home() {
       <TalkScene />
       <FooterScene />
     </main>
-  );
+  )
 }

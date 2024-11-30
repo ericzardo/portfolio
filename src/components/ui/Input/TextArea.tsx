@@ -1,4 +1,4 @@
-import { useCallback, RefObject, useEffect } from "react";
+import { useCallback, RefObject, useEffect } from 'react'
 
 interface TextAreaProps {
   ref: RefObject<HTMLTextAreaElement>;
@@ -8,16 +8,16 @@ interface TextAreaProps {
 export default function TextArea({ ref, placeholder, ...props }: TextAreaProps) {
 
   const handleTextareaResize = useCallback(() => {
-    const textarea = ref.current as HTMLTextAreaElement;
+    const textarea = ref.current as HTMLTextAreaElement
     if (textarea) {
-      textarea.style.height = "auto";
-      textarea.style.height = `${textarea.scrollHeight}px`;
+      textarea.style.height = 'auto'
+      textarea.style.height = `${textarea.scrollHeight}px`
     }
-  }, [ref]);
+  }, [ ref ])
 
   useEffect(() => {
-    handleTextareaResize();
-  }, [handleTextareaResize]);
+    handleTextareaResize()
+  }, [ handleTextareaResize ])
 
   return (
     <textarea
@@ -29,5 +29,5 @@ export default function TextArea({ ref, placeholder, ...props }: TextAreaProps) 
       onInput={handleTextareaResize}
       {...props}
     />
-  );
+  )
 }

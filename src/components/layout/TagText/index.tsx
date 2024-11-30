@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { ReactNode } from "react";
+import { ReactNode } from 'react'
 
 interface TagTextProps {
   children: ReactNode;
@@ -14,5 +14,5 @@ export default function TagText({ children, id }: TagTextProps) {
       <p className="tag-text lowercase text-900">{children}</p>
       <span className="tag-text text-600">/&gt;</span>
     </div>
-  );
+  )
 }

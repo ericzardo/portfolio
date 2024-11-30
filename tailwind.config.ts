@@ -45,6 +45,7 @@ export default {
       boxShadow: {
         'little': 'var(--box-shadow-little)',
         'shadow': 'var(--box-shadow)',
+        'blue': 'var(--box-shadow-blue)'
       },
       animation: {
         'clicked': "clicked 300ms ease-out",

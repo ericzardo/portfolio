@@ -1,6 +1,6 @@
-import { Tech } from "@typess/types";
+import { Tech } from '@typess/types'
 
-import IconCard from "@components/layout/IconCard";
+import IconCard from '@components/layout/IconCard'
 
 interface ProjectInfosProps {
   title: string;
@@ -10,8 +10,8 @@ interface ProjectInfosProps {
 
 export default function ProjectInfos({ title, description, techs }: ProjectInfosProps) {
 
-  const techsPreviewCount = 3;
-  const remainingTechs = techs.length - techsPreviewCount;
+  const techsPreviewCount = 3
+  const remainingTechs = techs.length - techsPreviewCount
 
   return (
     <div className="flex size-full max-h-[400px] max-w-[400px] flex-col justify-between gap-5 overflow-hidden rounded-xl bg-100 px-5 py-8 shadow-shadow">
@@ -34,5 +34,5 @@ export default function ProjectInfos({ title, description, techs }: ProjectInfos
       </div>
 
     </div>
-  );
+  )
 }

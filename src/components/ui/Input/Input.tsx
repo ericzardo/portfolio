@@ -1,4 +1,4 @@
-import { RefObject } from "react";
+import { RefObject } from 'react'
 
 interface TextInputProps {
   ref: RefObject<HTMLInputElement>;
@@ -14,5 +14,5 @@ export default function TextInput ({ ref, placeholder, ...props }: TextInputProp
       placeholder:select-none placeholder:text-600 sm:text-sm"
       {...props}
     />
-  );
+  )
 }

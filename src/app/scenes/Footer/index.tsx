@@ -1,34 +1,34 @@
-"use client";
+'use client'
 
-import { useCallback, useLayoutEffect } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
+import { useCallback, useLayoutEffect } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import gsap from 'gsap'
 
-import { SimpleIconName } from "@typess/types";
+import { SimpleIconName } from '@typess/types'
 
-import Link from "next/link";
-import IconButton from "@components/layout/IconButton";
-import { ScrollAnimation, UnmountAnimations } from "./Animations";
+import Link from 'next/link'
+import IconButton from '@components/layout/IconButton'
+import { ScrollAnimation, UnmountAnimations } from './Animations'
 
-import portfolio from "@portfolio";
+import portfolio from '@portfolio'
 
 
 export default function FooterScene () {
-  const { name, socials } = portfolio;
+  const { name, socials } = portfolio
 
   const openSocial = useCallback((url: string) => {
-    window.open(url, '_blank');
-  }, []);
+    window.open(url, '_blank')
+  }, [])
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger)
 
-    ScrollAnimation();
+    ScrollAnimation()
 
     return () => {
-      UnmountAnimations();
-    };
-  }, []);
+      UnmountAnimations()
+    }
+  }, [])
 
   return (
     <div id="footer-section" className="flex w-full flex-col items-center justify-between gap-4 bg-50 px-6 py-10 shadow-shadow sm:flex-row sm:px-8 sm:py-16 md:px-16 lg:px-24 xl:px-48">
@@ -48,5 +48,5 @@ export default function FooterScene () {
         </Link>
       </div>
     </div>
-  );
+  )
 }

@@ -5,11 +5,11 @@ import {
   useRef,
   useCallback,
   RefObject,
-} from "react";
+} from 'react'
 
-import TextArea from "./TextArea";
-import TextInput from "./Input";
-import IconLabel from "./IconLabel";
+import TextArea from './TextArea'
+import TextInput from './Input'
+import IconLabel from './IconLabel'
 
 type InputPropsType = InputHTMLAttributes<HTMLInputElement>;
 type TextareaPropsType = TextareaHTMLAttributes<HTMLTextAreaElement>;
@@ -32,11 +32,11 @@ export default function Input({
   ...props
 }: InputProps) {
 
-  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
+  const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null)
 
   const handleInputClick = useCallback(() => {
-    inputRef.current?.focus();
-  }, []);
+    inputRef.current?.focus()
+  }, [])
 
   return (
     <div
@@ -44,7 +44,7 @@ export default function Input({
       onClick={handleInputClick}
       className={`px3 m:py-2.5 sm:3.5 flex w-full max-w-[400px] cursor-text justify-start
       gap-2.5 overflow-hidden rounded-lg border border-200 bg-50 px-3 py-2 shadow-little transition-colors ease-in-out focus-within:border-400 md:px-4 md:py-3
-      ${error ? "border-l-error" : "border-200"} ${area ? "items-start" : "items-center"}`}
+      ${error ? 'border-l-error' : 'border-200'} ${area ? 'items-start' : 'items-center'}`}
     >
       
       <IconLabel area={area}>{icon}</IconLabel>
@@ -55,5 +55,5 @@ export default function Input({
         <TextInput ref={inputRef as RefObject<HTMLInputElement>} placeholder={placeholder} {...props} />
       )}
     </div>
-  );
+  )
 }

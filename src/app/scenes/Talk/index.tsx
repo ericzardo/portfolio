@@ -1,24 +1,37 @@
-"use client";
+'use client'
 
-import { useLayoutEffect } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
+import { useState, useLayoutEffect, useCallback } from 'react'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import gsap from 'gsap'
 
-import TagText from "@components/layout/TagText";
-import Form from "./Form";
-import { ScrollAnimation, UnmountAnimations } from "./Animations";
+import TagText from '@components/layout/TagText'
+import Form from '@components/@talk/Form'
+import Notification from '@components/ui/Notification'
+import { ScrollAnimation, UnmountAnimations } from './Animations'
+
+import { Notification as NotificationType } from '@typess/types'
 
 export default function TalkScene() {
+  const [ notification, setNotification ] = useState<NotificationType>({
+    active: false,
+    error: true,
+    sended: false,
+    message: ''
+  })
+
+  const closeNotification = useCallback(() => {
+    setNotification((prev) => ({ ...prev, active: false }))
+  }, [])
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    gsap.registerPlugin(ScrollTrigger)
 
-    ScrollAnimation();
+    ScrollAnimation()
 
     return () => {
-      UnmountAnimations();
-    };
-  }, []);
+      UnmountAnimations()
+    }
+  }, [])
 
   return (
     <section
@@ -29,12 +42,15 @@ export default function TalkScene() {
     >
       <TagText id="talk-title">talk me</TagText>
 
-      <div
-        id="talk-modal"
-        className="my-10 max-w-[700px] rounded-lg bg-gradient-to-r from-50 from-30% to-transparent px-7 py-3 shadow-shadow sm:px-8 sm:py-3.5 md:px-9 md:py-4 lg:px-10 lg:py-5"
-      >
-        <Form />
-      </div>
+      <Form closeNotification={closeNotification} notification={notification} setNotification={setNotification} />
+
+      {notification.active && (
+        <Notification
+          message={notification.message}
+          error={notification.error}
+          onClose={closeNotification}
+        />
+      )}
     </section>
-  );
+  )
 }

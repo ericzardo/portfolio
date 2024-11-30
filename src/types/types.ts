@@ -1,6 +1,23 @@
-import * as SimpleIcons from '@icons-pack/react-simple-icons';
+import * as SimpleIcons from '@icons-pack/react-simple-icons'
 
 export type SimpleIconName = keyof typeof SimpleIcons;
+
+export interface Notification {
+  error: boolean;
+  message: string;
+  active: boolean;
+  sended: boolean;
+}
+
+export interface Date {
+  from: string | null;
+  to: string | null;
+}
+
+export interface Quote {
+  phrase: string[];
+  author: string;
+}
 
 export interface Social {
   name: string;
@@ -18,6 +35,9 @@ export interface Project {
   description: string[];
   techs: Tech[]
   image: string;
+  date: Date;
+  features: string[] | null;
+  note: string | null;
 }
 
 export interface Portfolio {
@@ -27,4 +47,5 @@ export interface Portfolio {
   socials: Social[];
   techs: Tech[];
   projects: Project[];
+  quote: Quote | null
 }

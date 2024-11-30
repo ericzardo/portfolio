@@ -43,7 +43,7 @@
       ],
       "@schemas/*": [
         "./src/schemas/*"
-      ],
+      ]
     }
   },
   "include": [
