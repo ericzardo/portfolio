@@ -32,21 +32,22 @@ export default function ProjectsScene({}) {
   useGSAP(() => {
     if (!containerRef.current || !titleRef.current || !projectsRef.current) return
 
-    ScrollAnimation(containerRef.current, titleRef.current, projectsRef.current)
+    ScrollAnimation(containerRef.current, titleRef.current)
   }, {
     scope: containerRef
   })
+
 
   return (
     <section
       data-scroll
       data-scroll-section
       ref={containerRef}
-      className="relative flex min-h-dvh w-full flex-col items-end justify-center gap-3 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-48"
+      className='relative flex min-h-dvh w-full flex-col items-end justify-center gap-3 overflow-x-hidden px-4 sm:px-8 md:px-16 lg:px-24 xl:px-48'
     >
       <TagText ref={titleRef}>projects</TagText>
 
-      <div ref={projectsRef} className="flex w-max items-center justify-end gap-10">
+      <div ref={projectsRef} className="flex w-full gap-10">
         {projects.map((p) => (
           <ProjectCard key={p.title} project={p as ProjectType} onClick={() => openProject(p as ProjectType)} />
         ))}
@@ -57,6 +58,5 @@ export default function ProjectsScene({}) {
       )}
 
     </section>
-    
   )
 }

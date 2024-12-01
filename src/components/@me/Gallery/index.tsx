@@ -33,6 +33,10 @@ export default function Gallery ({ handleGallery }: GalleryProps) {
       >
         <X className="size-full text-error"/>
       </span>
+
+      <span className='flex size-full items-center justify-center'>
+        <p className='text-sm text-900'>Gallery is being built...</p>
+      </span>
     </div>
   )
 }

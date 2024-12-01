@@ -12,12 +12,12 @@ interface ProjectContentProps {
 
 export default function ProjectContent ({ project }: ProjectContentProps) {
   return (
-    <div className="flex h-full w-2/5 flex-col gap-5 py-10">
+    <div className="flex flex-col gap-1.5 py-4 sm:w-2/5 sm:gap-3 sm:py-6 md:gap-5 md:py-8 lg:py-10">
 
     <p className="text-sm text-900 sm:text-base">{project.title}</p>
     
-    <span className="flex flex-col gap-10">
-      <div className="flex flex-col gap-5">
+    <span className="flex flex-col gap-4 sm:gap-6 md:gap-8 lg:gap-10">
+      <div className="flex flex-col gap-2 sm:gap-3 md:gap-4 lg:gap-5">
         <ProjectDescription descriptions={project.description} />
         <ProjectFeatures features={project.features} />
         <ProjectNote note={project.note} />

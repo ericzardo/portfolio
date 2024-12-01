@@ -30,7 +30,7 @@ export default function Project ({ closeProject, project }: ProjectProps) {
   return (
     <div
       id="project"
-      className="fixed inset-5 z-50 flex items-center justify-between gap-2 rounded-xl bg-100 p-5 shadow-shadow"
+      className="fixed inset-2 z-50 flex items-center justify-between gap-2 rounded-xl bg-100 p-2 shadow-shadow sm:inset-3 sm:p-3 md:inset-4 md:p-4 lg:inset-5 lg:p-5"
     >
       <span
         onClick={closeProject}
@@ -39,7 +39,7 @@ export default function Project ({ closeProject, project }: ProjectProps) {
         <X className="size-full text-error"/>
       </span>
 
-      <span className="flex size-full items-center justify-between gap-10 p-5">
+      <span className="flex size-full flex-col items-center justify-between gap-4 overflow-auto p-2 sm:gap-6 sm:p-3 md:flex-row md:gap-8 md:p-4 lg:gap-10 lg:p-5">
         <ProjectContent project={project} />
 
         <div className="flex flex-1 select-none items-center justify-center object-cover">

@@ -1,7 +1,6 @@
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
 
-export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement, projects: HTMLDivElement) => {
+export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement) => {
   const triggerSection: gsap.DOMTarget | ScrollTrigger.Vars = {
     trigger: container,
     start: '-150 40%',
@@ -20,27 +19,19 @@ export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement
     }
   )
 
-  gsap.fromTo(
-    projects,
-    { x: 0, opacity: 0.6 },
-    {
-      x: '-10%',
-      opacity: 1,
-      scrollTrigger: triggerSection
-    }
-  )
+  const cards = gsap.utils.toArray('.project-card') as HTMLElement[]
+  const totalWidth = cards.reduce((acc, card) => acc + card.offsetWidth + 10, 0)
 
-  gsap.timeline({
+  gsap.to(cards, {
+    xPercent: -100 * (cards.length - 1),
+    ease: 'none',
     scrollTrigger: {
-      id: 'project-cards-trigger',
-      ...triggerSection
+      trigger: container,
+      scrub: 1.6,
+      snap: 1 / (cards.length - 1),
+      start: 'top top',
+      end: () => '+=' + totalWidth,
     }
   })
-  .fromTo('.project-card', 
-    { rotateX: 10, rotateY: 50 },
-    { rotateX: 0, rotateY: 0, duration: 0.8 }
-  )
-  .to('.project-card', 
-    { rotateX: 10, rotateY: -50, duration: 0.8 }
-  )
+
 }
