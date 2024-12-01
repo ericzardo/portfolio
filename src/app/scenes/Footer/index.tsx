@@ -1,14 +1,13 @@
 'use client'
 
-import { useCallback, useLayoutEffect } from 'react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import gsap from 'gsap'
+import { useCallback, useRef } from 'react'
+import { useGSAP } from '@gsap/react'
 
 import { SimpleIconName } from '@typess/types'
 
 import Link from 'next/link'
 import IconButton from '@components/layout/IconButton'
-import { ScrollAnimation, UnmountAnimations } from './Animations'
+import { ScrollAnimation } from './Animations'
 
 import portfolio from '@portfolio'
 
@@ -16,22 +15,22 @@ import portfolio from '@portfolio'
 export default function FooterScene () {
   const { name, socials } = portfolio
 
+  const containerRef = useRef<HTMLDivElement>(null)
+
   const openSocial = useCallback((url: string) => {
     window.open(url, '_blank')
   }, [])
 
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
+  useGSAP(() => {
+    if (!containerRef.current) return
 
-    ScrollAnimation()
-
-    return () => {
-      UnmountAnimations()
-    }
-  }, [])
+    ScrollAnimation(containerRef.current)
+  }, {
+    scope: containerRef
+  })
 
   return (
-    <div id="footer-section" className="flex w-full flex-col items-center justify-between gap-4 bg-50 px-6 py-10 shadow-shadow sm:flex-row sm:px-8 sm:py-16 md:px-16 lg:px-24 xl:px-48">
+    <div ref={containerRef} className="flex w-full flex-col items-center justify-between gap-4 bg-50 px-6 py-10 shadow-shadow sm:flex-row sm:px-8 sm:py-16 md:px-16 lg:px-24 xl:px-48">
       <span className="flex w-full flex-1 flex-col gap-2.5">
         <p className="select-text text-xs font-medium text-950 sm:text-sm md:text-base">{name}</p>
         <p className="select-none text-[10px] text-700 sm:text-xs md:text-sm">Copyright © 2024. All rights reserved.</p>

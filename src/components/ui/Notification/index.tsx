@@ -1,7 +1,8 @@
 'use client'
 
 import ReactDOM from 'react-dom'
-import { useLayoutEffect } from 'react'
+import { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
 
 import { CircleAlert, CircleCheckBig } from 'lucide-react'
 import { openNotification } from './Animations'
@@ -13,10 +14,16 @@ interface NotificationProps {
 }
 
 export default function Notification({ message, error, onClose }: NotificationProps) {
-  
-  useLayoutEffect(() => {
-    openNotification()
-  }, [])
+
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    if (!containerRef.current) return
+    
+    openNotification(containerRef.current)
+  }, {
+    scope: containerRef
+  })
 
   return ReactDOM.createPortal(
     <div

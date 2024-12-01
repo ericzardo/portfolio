@@ -1,16 +1,15 @@
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-export const ScrollAnimation = () => {
+export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement, form: HTMLDivElement) => {
 
   gsap.fromTo(
-    '#talk-title',
+    title,
     { x: '40%', opacity: 0.6 },
     {
       x: 0,
       opacity: 1,
       scrollTrigger: {
-        trigger: '#talk-section',
+        trigger: container,
         start: '-40% 40%',
         end: '70% 60%',
         scrub: 1.6,
@@ -20,13 +19,13 @@ export const ScrollAnimation = () => {
   )
 
   gsap.fromTo(
-    '#talk-modal',
+    form,
     { x: '30%', opacity: 0.6 },
     {
       x: 0,
       opacity: 1,
       scrollTrigger: {
-        trigger: '#talk-section',
+        trigger: container,
         start: '-30% 40%',
         end: '70% 60%',
         scrub: 1.6,
@@ -37,7 +36,7 @@ export const ScrollAnimation = () => {
 
   const timeline = gsap.timeline({
     scrollTrigger: {
-      trigger: '#talk-section',
+      trigger: container,
       start: '-20% 40%',
       end: '60% 80%',
       scrub: 1.6,
@@ -66,8 +65,4 @@ export const ScrollAnimation = () => {
       {  opacity: 0 },
       {  opacity: 1 },
     )
-}
-
-export const UnmountAnimations = () => {
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill())
 }

@@ -1,9 +1,10 @@
 'use cleint'
 
-import { useLayoutEffect } from 'react'
+import { useGSAP } from '@gsap/react'
 
 import { X } from 'lucide-react'
 import { GalleryAnimation } from './Animations'
+import { useRef } from 'react'
 
 interface GalleryProps {
   handleGallery: () => void;
@@ -11,13 +12,19 @@ interface GalleryProps {
 
 export default function Gallery ({ handleGallery }: GalleryProps) {
 
-  useLayoutEffect(() => {
-    GalleryAnimation()
-  }, [])
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    if (!containerRef.current) return
+
+    GalleryAnimation(containerRef.current)
+  }, {
+    scope: containerRef
+  })
 
   return (
     <div
-      id="me-gallery"
+      ref={containerRef}
       className="fixed inset-5 z-50 flex items-center justify-center rounded-xl bg-100 p-5 shadow-shadow"
     >
       <span

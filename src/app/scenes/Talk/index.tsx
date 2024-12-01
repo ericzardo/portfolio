@@ -1,13 +1,12 @@
 'use client'
 
-import { useState, useLayoutEffect, useCallback } from 'react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import gsap from 'gsap'
+import { useState, useCallback, useRef } from 'react'
+import { useGSAP } from '@gsap/react'
 
 import TagText from '@components/layout/TagText'
 import Form from '@components/@talk/Form'
 import Notification from '@components/ui/Notification'
-import { ScrollAnimation, UnmountAnimations } from './Animations'
+import { ScrollAnimation } from './Animations'
 
 import { Notification as NotificationType } from '@typess/types'
 
@@ -19,30 +18,32 @@ export default function TalkScene() {
     message: ''
   })
 
+  const containerRef = useRef<HTMLDivElement>(null)
+  const titleRef = useRef<HTMLDivElement>(null)
+  const modalRef = useRef<HTMLDivElement>(null)
+
   const closeNotification = useCallback(() => {
     setNotification((prev) => ({ ...prev, active: false }))
   }, [])
 
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-
-    ScrollAnimation()
-
-    return () => {
-      UnmountAnimations()
-    }
-  }, [])
+  useGSAP(() => {
+    if (!containerRef.current || !titleRef.current || !modalRef.current) return
+    
+    ScrollAnimation(containerRef.current, titleRef.current, modalRef.current)
+  }, {
+    scope: containerRef
+  })
 
   return (
     <section
       data-scroll
       data-scroll-section
-      id="talk-section"
+      ref={containerRef}
       className="flex min-h-max w-full flex-col justify-center gap-3 px-4 py-40 sm:px-8 md:px-16 lg:px-24 xl:px-48"
     >
-      <TagText id="talk-title">talk me</TagText>
+      <TagText ref={titleRef}>talk me</TagText>
 
-      <Form closeNotification={closeNotification} notification={notification} setNotification={setNotification} />
+      <Form ref={modalRef} closeNotification={closeNotification} notification={notification} setNotification={setNotification} />
 
       {notification.active && (
         <Notification

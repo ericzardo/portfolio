@@ -1,12 +1,11 @@
 'use client'
 
-import { useLayoutEffect } from 'react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import gsap from 'gsap'
+import { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
 
 import TagText from '@components/layout/TagText'
 import IconCard from '@components/layout/IconCard'
-import { UnmountAnimations, ScrollAnimation } from './Animations'
+import { ScrollAnimation } from './Animations'
 
 import portfolio from '@portfolio'
 import { SimpleIconName } from '@typess/types'
@@ -14,26 +13,28 @@ import { SimpleIconName } from '@typess/types'
 export default function TechsScene({}) {
   const { techs } = portfolio
 
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const titleRef = useRef<HTMLDivElement>(null)
+  const techsRef = useRef<HTMLDivElement>(null)
 
-    ScrollAnimation()
-  
-    return () => {
-      UnmountAnimations()
-    }
-  }, [])
+  useGSAP(() => {
+    if (!containerRef.current || !titleRef.current || !techsRef.current) return
+    
+    ScrollAnimation(containerRef.current, titleRef.current, techsRef.current)
+  }, {
+    scope: containerRef
+  })
 
   return (
     <section
-      id="techs-section"
       data-scroll
       data-scroll-section
+      ref={containerRef}
       className="flex min-h-max w-full flex-col items-end gap-3 px-4 py-40 sm:px-8 md:px-16 lg:px-24 xl:px-48"
     >
-      <TagText id="techs-title">techs</TagText>
+      <TagText ref={titleRef}>techs</TagText>
 
-      <div id="techs" className="my-5 flex w-full items-center justify-start gap-4">
+      <div ref={techsRef} className="my-5 flex w-full items-center justify-start gap-4">
         {techs.map(t => (
           <IconCard
             key={t.name}

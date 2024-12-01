@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { RefObject, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Controller } from 'react-hook-form'
@@ -15,9 +15,10 @@ interface FormProps {
   setNotification: (notification: Notification) => void;
   notification: Notification;
   closeNotification: () => void;
+  ref: RefObject<HTMLDivElement>
 }
 
-export default function Form({ setNotification, notification, closeNotification }: FormProps) {
+export default function Form({ setNotification, notification, closeNotification, ref }: FormProps) {
   const {
     handleSubmit,
     control,
@@ -99,73 +100,79 @@ export default function Form({ setNotification, notification, closeNotification 
   }, [ notification.active, closeNotification ])
   
   return (
-        <form
-        id="talk-form"
-        onSubmit={handleSubmit(submitTalk)}
-        className="flex w-full max-w-[400px] flex-col items-end gap-4 py-8 sm:py-9 md:py-10"
-        onMouseMove={handleUserInteraction}
-        onKeyDown={handleUserInteraction}
-        onFocus={handleUserInteraction}
+      <div
+        ref={ref}
+        className="my-10 max-w-[700px] rounded-lg bg-gradient-to-r from-50 from-30% to-transparent px-7 py-3 shadow-shadow sm:px-8 sm:py-3.5 md:px-9 md:py-4 lg:px-10 lg:py-5"
       >
-      <Controller
-        name="name"
-        control={control}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            id="input-name"
-            icon={<User />}
-            placeholder="Your Name"
-            error={errors.name?.message}
+        <form
+          onSubmit={handleSubmit(submitTalk)}
+          className="flex w-full max-w-[400px] flex-col items-end gap-4 py-8 sm:py-9 md:py-10"
+          onMouseMove={handleUserInteraction}
+          onKeyDown={handleUserInteraction}
+          onFocus={handleUserInteraction}
+        >
+        <Controller
+          name="name"
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              id="input-name"
+              icon={<User />}
+              placeholder="Your Name"
+              error={errors.name?.message}
 
-            onChange={onChange}
-            onBlur={onBlur}
-            value={value}
-          />
-        )}
-      />
-      <Controller
-        name="email"
-        control={control}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            id="input-email"
-            icon={<AtSign />}
-            placeholder="Your Email"
-            error={errors.email?.message}
-            
-            onChange={onChange}
-            onBlur={onBlur}
-            value={value}
-            type="email"
-          />
-        )}
-      />
-      <Controller
-        name="message"
-        control={control}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <Input
-            id="input-message"
-            icon={<Pencil />}
-            placeholder="Message here..."
-            error={errors.message?.message}
+              onChange={onChange}
+              onBlur={onBlur}
+              value={value}
+            />
+          )}
+        />
+        <Controller
+          name="email"
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              id="input-email"
+              icon={<AtSign />}
+              placeholder="Your Email"
+              error={errors.email?.message}
+              
+              onChange={onChange}
+              onBlur={onBlur}
+              value={value}
+              type="email"
+            />
+          )}
+        />
+        <Controller
+          name="message"
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              id="input-message"
+              icon={<Pencil />}
+              placeholder="Message here..."
+              error={errors.message?.message}
 
-            onChange={onChange}
-            onBlur={onBlur}
-            value={value}
+              onChange={onChange}
+              onBlur={onBlur}
+              value={value}
 
-            area
-          />
-        )}
-      />
-      <Button
-        id="talk-button"
-        icon={<ArrowRight />}
-        label="Send"
-        type="submit"
-        disabled={notification.sended}
-        isLoading={isSubmitting}
-      />
-      </form>
+              area
+            />
+          )}
+        />
+        <Button
+          id="talk-button"
+          icon={<ArrowRight />}
+          label="Send"
+          type="submit"
+          disabled={notification.sended}
+          isLoading={isSubmitting}
+        />
+        </form>
+
+      </div>
+      
   )
 }

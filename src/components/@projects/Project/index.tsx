@@ -1,13 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
 'use cleint'
 
-import { useLayoutEffect } from 'react'
+import { useRef } from 'react'
 
 import { X } from 'lucide-react'
 import { ProjectAnimation } from './Animations'
 
 import { Project as ProjectType } from '@typess/types'
 import ProjectContent from './Content'
+import { useGSAP } from '@gsap/react'
 
 interface ProjectProps {
   project: ProjectType
@@ -16,9 +17,15 @@ interface ProjectProps {
 
 export default function Project ({ closeProject, project }: ProjectProps) {
 
-  useLayoutEffect(() => {
-    ProjectAnimation()
-  }, [])
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useGSAP(() => {
+    if (!containerRef.current) return
+    
+    ProjectAnimation(containerRef.current)
+  }, {
+    scope: containerRef
+  })
 
   return (
     <div

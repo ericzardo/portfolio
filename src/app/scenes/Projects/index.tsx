@@ -1,13 +1,12 @@
 'use client'
 
-import { useLayoutEffect, useState, useCallback } from 'react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import gsap from 'gsap'
+import { useState, useCallback, useRef } from 'react'
+import { useGSAP } from '@gsap/react'
 
 import TagText from '@components/layout/TagText'
 import ProjectCard from '@components/@projects/Card'
 import Project from '@components/@projects/Project'
-import { ScrollAnimation, UnmountAnimations } from './Animations'
+import { ScrollAnimation } from './Animations'
 
 import portfolio from '@portfolio'
 import { Project as ProjectType } from '@typess/types'
@@ -15,6 +14,10 @@ import { Project as ProjectType } from '@typess/types'
 
 export default function ProjectsScene({}) {
   const { projects } = portfolio
+
+  const containerRef = useRef<HTMLDivElement>(null)
+  const titleRef = useRef<HTMLDivElement>(null)
+  const projectsRef = useRef<HTMLDivElement>(null)
 
   const [ selectedProject, setSelectedProject ] = useState<ProjectType | null>(null)
 
@@ -26,26 +29,24 @@ export default function ProjectsScene({}) {
     setSelectedProject(null)
   }, [])
 
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
+  useGSAP(() => {
+    if (!containerRef.current || !titleRef.current || !projectsRef.current) return
 
-    ScrollAnimation()
-
-    return () => {
-      UnmountAnimations()
-    }
-  }, [])
+    ScrollAnimation(containerRef.current, titleRef.current, projectsRef.current)
+  }, {
+    scope: containerRef
+  })
 
   return (
     <section
       data-scroll
       data-scroll-section
-      id="projects-section"
+      ref={containerRef}
       className="relative flex min-h-dvh w-full flex-col items-end justify-center gap-3 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-48"
     >
-      <TagText id="projects-title">projects</TagText>
+      <TagText ref={titleRef}>projects</TagText>
 
-      <div id="projects" className="flex w-max items-center justify-end gap-10">
+      <div ref={projectsRef} className="flex w-max items-center justify-end gap-10">
         {projects.map((p) => (
           <ProjectCard key={p.title} project={p as ProjectType} onClick={() => openProject(p as ProjectType)} />
         ))}

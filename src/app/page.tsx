@@ -1,6 +1,9 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 
 import HeroScene from './scenes/Hero'
 import ProjectsScene from './scenes/Projects'
@@ -10,9 +13,10 @@ import QuoteScene from '@scenes/Quote'
 import TalkScene from '@scenes/Talk'
 import FooterScene from '@scenes/Footer'
 
-
 export default function Home() {
   const mainRef = useRef<HTMLElement>(null)
+
+  gsap.registerPlugin(ScrollTrigger, useGSAP)
 
   useEffect(() => {
 

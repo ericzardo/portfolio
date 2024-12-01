@@ -1,8 +1,8 @@
 import gsap from 'gsap'
 
-export const GalleryAnimation = () => {
+export const GalleryAnimation = (container: HTMLDivElement) => {
   gsap.fromTo(
-    '#me-gallery',
+    container,
     { scale: 0.2 },
     { scale: 1 }
   )

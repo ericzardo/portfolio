@@ -1,9 +1,9 @@
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import gsap from 'gsap'
 
-export const ScrollAnimation = () => {
+export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement, projects: HTMLDivElement) => {
   const triggerSection: gsap.DOMTarget | ScrollTrigger.Vars = {
-    trigger: '#projects-section',
+    trigger: container,
     start: '-150 40%',
     end: 'bottom 60%',
     scrub: 1.6,
@@ -11,7 +11,7 @@ export const ScrollAnimation = () => {
   }
 
   gsap.fromTo(
-    '#projects-title',
+    title,
     { x: '-30%', opacity: 0.6 },
     {
       x: 0,
@@ -21,7 +21,7 @@ export const ScrollAnimation = () => {
   )
 
   gsap.fromTo(
-    '#projects',
+    projects,
     { x: 0, opacity: 0.6 },
     {
       x: '-10%',
@@ -43,8 +43,4 @@ export const ScrollAnimation = () => {
   .to('.project-card', 
     { rotateX: 10, rotateY: -50, duration: 0.8 }
   )
-}
-
-export const UnmountAnimations = () => {
-  ScrollTrigger.getAll().forEach(trigger => trigger.kill())
 }

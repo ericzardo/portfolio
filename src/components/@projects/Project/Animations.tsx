@@ -1,8 +1,8 @@
 import gsap from 'gsap'
 
-export const ProjectAnimation = () => {
+export const ProjectAnimation = (container: HTMLDivElement) => {
   gsap.fromTo(
-    '#project',
+    container,
     { scale: 0.2 },
     { scale: 1 }
   )

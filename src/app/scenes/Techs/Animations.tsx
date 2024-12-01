@@ -1,28 +1,13 @@
 import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-
-export const UnmountAnimations = () => {
-  const triggers = ScrollTrigger.getAll()
-  triggers.forEach((trigger) => {
-    if (trigger.vars.trigger === '#techs-section') {
-      trigger.kill()
-    }
-  })
-}
-
-export const ScrollAnimation = () => {
+export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement, techs: HTMLDivElement) => {
   const triggerSection: gsap.DOMTarget | ScrollTrigger.Vars = {
-    trigger: '#techs-section',
+    trigger: container,
     start: '-20% 40%',
     end: '110% 60%',
     scrub: 1.6,
     markers: false,
   }
-
-  const techs = document.querySelector<HTMLDivElement>('#techs')
-
-  if (!techs) return
 
   const containerWidth = techs.scrollWidth
   const viewportWidth = window.innerWidth
@@ -30,7 +15,7 @@ export const ScrollAnimation = () => {
   const maxScroll = containerWidth - viewportWidth
 
   gsap.fromTo(
-    '#techs-title',
+    title,
     { x: '-40%', opacity: 0.6 },
     {
       x: 0,
@@ -44,7 +29,7 @@ export const ScrollAnimation = () => {
     {
       x: () => -maxScroll - techs.offsetLeft,
       scrollTrigger: {
-        trigger: '#techs-section',
+        trigger: container,
         start: '-50% 40%',
         end: '120% 60%',
         scrub: 1.6,

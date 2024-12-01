@@ -1,26 +1,25 @@
 'use client'
 
-import { useLayoutEffect } from 'react'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import gsap from 'gsap'
+import { useRef } from 'react'
+import { useGSAP } from '@gsap/react'
 
 import Quote from '@components/@quote'
-import { ScrollAnimation, UnmountAnimations } from './Animations'
+import { ScrollAnimation } from './Animations'
 
 import portfolio from '@portfolio'
 
 export default function QuoteScene() {
   const { quote } = portfolio
 
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
+  const containerRef = useRef<HTMLDivElement>(null)
 
-    ScrollAnimation()
+  useGSAP(() => {
+    if (!containerRef.current) return
 
-    return () => {
-      UnmountAnimations()
-    }
-  }, [])
+    ScrollAnimation(containerRef.current)
+  }, {
+    scope: containerRef
+  })
 
   if (!quote) return
 
@@ -28,7 +27,7 @@ export default function QuoteScene() {
     <section
       data-scroll
       data-scroll-section
-      id="quote-section"
+      ref={containerRef}
       className="flex min-h-dvh w-full flex-col justify-center gap-3 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-48"
     >
       <span className="flex items-center justify-center">

@@ -1,7 +1,6 @@
 'use client'
 
-import { useCallback, MouseEvent, useLayoutEffect } from 'react'
-import gsap from 'gsap'
+import { useCallback, MouseEvent } from 'react'
 
 import ProjectPreview from './PreviewCard'
 import ProjectInfos from './InfosCard'
@@ -22,10 +21,6 @@ export default function ProjectCard ({ project, onClick }: ProjectCardProps) {
 
   const handleHoverOut = useCallback((e: MouseEvent<HTMLDivElement>) => {
     onHoverOut(e)
-  }, [])
-
-  useLayoutEffect(() => {
-    gsap.set('.project-card', { perspective: '2000px' })
   }, [])
 
   return (
