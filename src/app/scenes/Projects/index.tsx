@@ -45,7 +45,7 @@ export default function ProjectsScene({}) {
       <TagText ref={titleRef}>projects</TagText>
 
 
-      <div ref={projectsRef} className="flex w-full justify-start gap-40 -translate-x-5">
+      <div ref={projectsRef} className="flex w-full justify-start gap-12 -translate-x-5 sm:gap-24 md:gap-32 lg:gap-40">
         {projects.map((p) => (
           <ProjectCard key={p.title} project={p as ProjectType} onClick={() => openProject(p as ProjectType)} />
         ))}

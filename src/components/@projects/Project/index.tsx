@@ -56,11 +56,10 @@ export default function Project ({ closeProject, project }: ProjectProps) {
       <span className="flex size-full flex-col items-center justify-between gap-4 overflow-auto p-2 sm:gap-6 sm:p-3 md:flex-row md:gap-8 md:p-4 lg:gap-10 lg:p-5">
         <ProjectContent project={project} />
 
-        <div className="flex flex-1 select-none items-center justify-center object-cover">
+        <div className="flex flex-1 select-none items-center justify-center overflow-hidden rounded-xl object-cover shadow-shadow">
           <img
             src={`/projects/${project.image}`}
             alt={`Background preview banner showcasing the ${project.title} project`}
-            className="shdow-shadow rounded-xl"
           />
         </div>
 

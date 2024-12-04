@@ -28,7 +28,7 @@ export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement
   gsap.set(cards, { rotateY: -40, x: 10, rotateZ: 2 })
 
   gsap.to(cards, {
-    xPercent: -70 * (cards.length - 1),
+    xPercent: -100 * (cards.length - 1),
     ease: 'none',
     scrollTrigger: {
       trigger: container,
