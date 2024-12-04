@@ -27,22 +27,23 @@ export default function TechsScene({}) {
 
   return (
     <section
-      data-scroll
-      data-scroll-section
       ref={containerRef}
-      className="flex min-h-max w-full flex-col items-end gap-3 px-4 py-40 sm:px-8 md:px-16 lg:px-24 xl:px-48"
+      className="relative min-h-max"
     >
-      <TagText ref={titleRef}>techs</TagText>
+      <span className='flex w-full flex-col items-end gap-3 px-4 py-40 sm:px-8 md:px-16 lg:px-24 xl:px-48'>
+        <TagText ref={titleRef}>techs</TagText>
 
-      <div ref={techsRef} className="my-5 flex w-full items-center justify-start gap-4">
-        {techs.map(t => (
-          <IconCard
-            key={t.name}
-            name={t.name}
-            icon={t.icon as SimpleIconName}
-          />
-        ))}
-      </div>
+        <div ref={techsRef} className="my-5 flex w-full items-center justify-start gap-4">
+          {techs.map(t => (
+            <IconCard
+              key={t.name}
+              name={t.name}
+              icon={t.icon as SimpleIconName}
+            />
+          ))}
+        </div>
+      </span>
+      
 
     </section>
   )

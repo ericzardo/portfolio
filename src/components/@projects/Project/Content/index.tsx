@@ -5,6 +5,7 @@ import ProjectTechs from './Techs'
 import ProjectDate from './Date'
 
 import { Project } from '@typess/types'
+import ProjectDemo from './Demo'
 
 interface ProjectContentProps {
   project: Project
@@ -23,6 +24,7 @@ export default function ProjectContent ({ project }: ProjectContentProps) {
         <ProjectNote note={project.note} />
       </div>
       <ProjectTechs techs={project.techs} />
+      <ProjectDemo demo={project.demo} />
       <ProjectDate date={project.date} />
     </span>
   </div>

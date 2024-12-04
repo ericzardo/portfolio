@@ -16,10 +16,12 @@ interface ProjectCardProps {
 export default function ProjectCard ({ project, onClick }: ProjectCardProps) {
 
   const handleHover = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    console.log('Hovered')
     onHover(e)
   }, [])
 
   const handleHoverOut = useCallback((e: MouseEvent<HTMLDivElement>) => {
+    console.log('un Hovered!')
     onHoverOut(e)
   }, [])
 

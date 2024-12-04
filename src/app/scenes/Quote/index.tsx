@@ -25,16 +25,15 @@ export default function QuoteScene() {
 
   return (
     <section
-      data-scroll
-      data-scroll-section
       ref={containerRef}
       className="flex min-h-dvh w-full flex-col justify-center gap-3 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-48"
     >
-      <span className="flex items-center justify-center">
+        <span className="flex items-center justify-center">
 
-        <Quote author={quote.author} phrase={quote.phrase} />
+          <Quote author={quote.author} phrase={quote.phrase} />
 
-      </span>
+        </span>
+      
 
     </section> 
   )

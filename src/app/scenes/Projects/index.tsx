@@ -11,7 +11,6 @@ import { ScrollAnimation } from './Animations'
 import portfolio from '@portfolio'
 import { Project as ProjectType } from '@typess/types'
 
-
 export default function ProjectsScene({}) {
   const { projects } = portfolio
 
@@ -40,18 +39,18 @@ export default function ProjectsScene({}) {
 
   return (
     <section
-      data-scroll
-      data-scroll-section
       ref={containerRef}
-      className='relative flex min-h-dvh w-full flex-col items-end justify-center gap-3 overflow-x-hidden px-4 sm:px-8 md:px-16 lg:px-24 xl:px-48'
+      className='relative flex min-h-dvh w-full flex-col items-end justify-center gap-3 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-48'
     >
       <TagText ref={titleRef}>projects</TagText>
 
-      <div ref={projectsRef} className="flex w-full gap-10">
+
+      <div ref={projectsRef} className="flex w-full justify-start gap-40 -translate-x-5">
         {projects.map((p) => (
           <ProjectCard key={p.title} project={p as ProjectType} onClick={() => openProject(p as ProjectType)} />
         ))}
       </div>
+
 
       {selectedProject && (
         <Project project={selectedProject} closeProject={closeProject} />

@@ -31,8 +31,6 @@ export default function HeroScene() {
 
   return (
     <section
-      data-scroll
-      data-scroll-section
       ref={containerRef}
       className="relative flex min-h-dvh w-full select-none flex-col justify-center gap-3 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-48"
     >
@@ -47,6 +45,10 @@ export default function HeroScene() {
       </h1>
 
       <TagText ref={roleRef}>{role}</TagText>
+
+        
+
+      
     </section>
   )
 }

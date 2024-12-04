@@ -1,48 +1,49 @@
 import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 
 export const ScrollAnimation = (container: HTMLDivElement) => {
 
-  const triggerSection: gsap.DOMTarget | ScrollTrigger.Vars = {
+  ScrollTrigger.create({
     trigger: container,
-    start: '-10% 40%',
-    end: 'bottom 60%',
-    scrub: 1.6,
+    start: 'top top',
+    end: '+=100%',
+    pin: true,
     markers: false,
-  }
+    scrub: true,
+    anticipatePin: 0.2
+  })
 
-  gsap.fromTo(
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: container,
+      start: 'top top',
+      end: '+=100%',
+      scrub: true,
+    },
+  })
+
+  timeline
+  .fromTo(
     '#quote-icon',
     { x: '80%', opacity: 0.4, filter: 'blur(2px)' },
-    {
-      x: 0, opacity: 1, filter: 'blur(12px)',
-      scrollTrigger: triggerSection,
-    }
+    { x: 0, opacity: 1, filter: 'blur(0)', duration: 1 }
   )
-
-  gsap.fromTo(
+  .fromTo(
     '#quote-one',
-    { x: 0 },
-    {
-      x: '5%',
-      scrollTrigger: triggerSection,
-    }
+    { scale: 0.5, x: -100, y: -50, opacity: 0.4 },
+    { scale: 1, x: 0, y: 0, opacity: 1, duration: 1 },
+    '<'
   )
-
-  gsap.fromTo(
+  .fromTo(
     '#quote-two',
-    { x: 0,  },
-    {
-      x: '10%',
-      scrollTrigger: triggerSection,
-    }
+    { scale: 0.5, x: 100, y: 50, opacity: 0.4 },
+    { scale: 1, x: 0, y: 0, opacity: 1, duration: 1 },
+    '<'
   )
-
-  gsap.fromTo(
+  .fromTo(
     '#quote-author',
-    { x: '-40%',  },
-    {
-      x: '25%', 
-      scrollTrigger: triggerSection,
-    }
+    { scale: 0.5, y: 50, opacity: 0.4 },
+    { scale: 1, y: 0, opacity: 1, duration: 1 },
+    '-=0.75'
   )
 }

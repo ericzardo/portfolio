@@ -14,6 +14,11 @@ export interface Date {
   to: string | null;
 }
 
+export interface Demo {
+  repository: string | null;
+  preview: string | null
+}
+
 export interface Quote {
   phrase: string[];
   author: string;
@@ -38,6 +43,7 @@ export interface Project {
   date: Date;
   features: string[] | null;
   note: string | null;
+  demo: Demo;
 }
 
 export interface Portfolio {

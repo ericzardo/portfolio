@@ -1,13 +1,6 @@
 import gsap from 'gsap'
 
 export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement) => {
-  const triggerSection: gsap.DOMTarget | ScrollTrigger.Vars = {
-    trigger: container,
-    start: '-150 40%',
-    end: 'bottom 60%',
-    scrub: 1.6,
-    markers: false,
-  }
 
   gsap.fromTo(
     title,
@@ -15,23 +8,52 @@ export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement
     {
       x: 0,
       opacity: 1,
-      scrollTrigger: triggerSection
+      scrollTrigger: {
+        trigger: container,
+        start: '-110% 40%',
+        end: '110% 60%',
+        scrub: true,
+        markers: false,
+      }
     }
   )
 
   const cards = gsap.utils.toArray('.project-card') as HTMLElement[]
-  const totalWidth = cards.reduce((acc, card) => acc + card.offsetWidth + 10, 0)
+
+  const totalWidth = Array.from(cards).reduce(
+    (acc, card) => acc + card.offsetWidth + 20,
+    0
+  )
+
+  gsap.set(cards, { rotateY: -40, x: 10, rotateZ: 2 })
 
   gsap.to(cards, {
-    xPercent: -100 * (cards.length - 1),
+    xPercent: -70 * (cards.length - 1),
     ease: 'none',
     scrollTrigger: {
       trigger: container,
-      scrub: 1.6,
-      snap: 1 / (cards.length - 1),
       start: 'top top',
-      end: () => '+=' + totalWidth,
-    }
+      end: () => `+=${totalWidth + window.innerHeight}`,
+      pin: true,
+      snap: 1 / (cards.length - 1),
+      scrub: true,
+      markers: false,
+      anticipatePin: 0.2,
+      id: 'project-cards-trigger',
+    },
   })
 
+  // const timeline = gsap.timeline({
+  //   scrollTrigger: {
+  //     trigger: container,
+  //     start: 'top top',
+  //     end: () => `+=${totalWidth + window.innerHeight}`,
+  //     scrub: true,
+  //     markers: false,
+  //   },
+  // })
+
+  // timeline
+  //   .to(cards, { rotateY: 0, rotateX: 0, rotateZ: 0 })
+  //   .to(cards, { rotateY: 45, rotateX: 20, rotateZ: 10  })
 }

@@ -3,9 +3,9 @@ import gsap from 'gsap'
 export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement) => {
   const triggerSection: gsap.DOMTarget | ScrollTrigger.Vars = {
     trigger: container,
-    start: '-30% 40%',
-    end: 'bottom 60%',
-    scrub: 1.6,
+    start: '-110% 40%',
+    end: '110%% 60%',
+    scrub: true,
     markers: false,
   }
 

@@ -36,8 +36,6 @@ export default function TalkScene() {
 
   return (
     <section
-      data-scroll
-      data-scroll-section
       ref={containerRef}
       className="flex min-h-max w-full flex-col justify-center gap-3 px-4 py-40 sm:px-8 md:px-16 lg:px-24 xl:px-48"
     >
@@ -52,6 +50,7 @@ export default function TalkScene() {
           onClose={closeNotification}
         />
       )}
+      
     </section>
   )
 }

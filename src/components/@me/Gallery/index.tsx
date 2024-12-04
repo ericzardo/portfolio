@@ -1,18 +1,32 @@
 'use cleint'
 
+import { useRef, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
+import { useLenis } from '@studio-freight/react-lenis'
 
 import { X } from 'lucide-react'
 import { GalleryAnimation } from './Animations'
-import { useRef } from 'react'
 
 interface GalleryProps {
   handleGallery: () => void;
 }
 
 export default function Gallery ({ handleGallery }: GalleryProps) {
+  const lenis = useLenis()
 
   const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (lenis) {
+      lenis.stop()
+    }
+
+    return () => {
+      if (lenis) {
+        lenis.start()
+      }
+    }
+  }, [ lenis ])
 
   useGSAP(() => {
     if (!containerRef.current) return

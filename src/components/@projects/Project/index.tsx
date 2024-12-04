@@ -1,14 +1,15 @@
 /* eslint-disable @next/next/no-img-element */
 'use cleint'
 
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
+import { useGSAP } from '@gsap/react'
+import { useLenis } from '@studio-freight/react-lenis'
 
 import { X } from 'lucide-react'
+import ProjectContent from './Content'
 import { ProjectAnimation } from './Animations'
 
 import { Project as ProjectType } from '@typess/types'
-import ProjectContent from './Content'
-import { useGSAP } from '@gsap/react'
 
 interface ProjectProps {
   project: ProjectType
@@ -16,8 +17,21 @@ interface ProjectProps {
 }
 
 export default function Project ({ closeProject, project }: ProjectProps) {
+  const lenis = useLenis()
 
   const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (lenis) {
+      lenis.stop()
+    }
+
+    return () => {
+      if (lenis) {
+        lenis.start()
+      }
+    }
+  }, [ lenis ])
 
   useGSAP(() => {
     if (!containerRef.current) return
@@ -29,8 +43,8 @@ export default function Project ({ closeProject, project }: ProjectProps) {
 
   return (
     <div
-      id="project"
-      className="fixed inset-2 z-50 flex items-center justify-between gap-2 rounded-xl bg-100 p-2 shadow-shadow sm:inset-3 sm:p-3 md:inset-4 md:p-4 lg:inset-5 lg:p-5"
+      ref={containerRef}
+      className="fixed inset-2 z-50 flex items-center justify-between gap-2 overflow-hidden rounded-xl bg-100 p-2 shadow-shadow sm:inset-3 sm:p-3 md:inset-4 md:p-4 lg:inset-5 lg:p-5"
     >
       <span
         onClick={closeProject}

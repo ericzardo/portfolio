@@ -141,7 +141,11 @@
         "Exclusive administration page",
         "Management of permissions, roles, themes, and chats"
       ],
-      "note": "is in BETA version"
+      "note": "is in BETA version",
+      "demo": {
+        "repository": "https://github.com/ericzardo/chatt.on",
+        "preview": "https://chat.mentesmart.com.br/"
+      }
     },
     {
       "title": "plann.er",
@@ -175,7 +179,11 @@
         "Allow participants to confirm attendance to the trip.",
         "Save and manage essential trip-related links."
       ],
-      "note": "developed in a course"
+      "note": "developed in a course",
+      "demo": {
+        "repository": "https://github.com/ericzardo/plann.er",
+        "preview": null
+      }
     },
     {
       "title": "Routine App",
@@ -221,7 +229,11 @@
         "Organize documents: create and move files between profiles & folders.",
         "Switch between light and dark theme"
       ],
-      "note": "not finished"
+      "note": "not finished",
+      "demo": {
+        "repository": "https://github.com/ericzardo/routine-app",
+        "preview": null
+      }
     },
     {
       "title": "Ebook LP",
@@ -247,6 +259,10 @@
       "date": {
         "from": "01/2024",
         "to": "04/2024"
+      },
+      "demo": {
+        "repository": "https://github.com/ericzardo/mentesmart-lp",
+        "preview": "https://mentesmart.com.br/"
       }
     }
   ],

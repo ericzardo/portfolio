@@ -5,7 +5,7 @@ export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement
     trigger: container,
     start: '-20% 40%',
     end: '110% 60%',
-    scrub: 1.6,
+    scrub: true,
     markers: false,
   }
 
@@ -25,14 +25,14 @@ export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement
   )
 
   gsap.fromTo(techs,
-    { x: '-20%' },
+    { x: '-17%' },
     {
       x: () => -maxScroll - techs.offsetLeft,
       scrollTrigger: {
         trigger: container,
-        start: '-50% 40%',
-        end: '120% 60%',
-        scrub: 1.6,
+        start: '-30% 40%',
+        end: '150% 60%',
+        scrub: 3,
         markers: false,
       },
     }

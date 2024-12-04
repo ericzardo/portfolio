@@ -8,11 +8,12 @@ export const ScrollAnimation = (container: HTMLDivElement) => {
       y: 0,
       opacity: 1,
       scale: 1,
+      duration: 2,
       scrollTrigger: {
         trigger: container,
         start: '-100% 90%',
-        end: '-20% 80%',
-        scrub: 1.6,
+        end: '50% bottom',
+        scrub: true,
         markers: false,
       },
     }
