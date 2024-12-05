@@ -2,19 +2,19 @@
 
 import { useCallback, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
+import dynamic from 'next/dynamic'
 
 import { SimpleIconName } from '@typess/types'
 
 import Link from 'next/link'
-import IconButton from '@components/layout/IconButton'
+const IconButton = dynamic(() => import('@components/layout/IconButton'))
 import { ScrollAnimation } from './Animations'
 
 import portfolio from '@portfolio'
 
 
-export default function FooterScene () {
+export default function FooterScene() {
   const { name, socials } = portfolio
-
   const containerRef = useRef<HTMLDivElement>(null)
 
   const openSocial = useCallback((url: string) => {
@@ -23,10 +23,9 @@ export default function FooterScene () {
 
   useGSAP(() => {
     if (!containerRef.current) return
-
     ScrollAnimation(containerRef.current)
   }, {
-    scope: containerRef
+    scope: containerRef,
   })
 
   return (
@@ -35,7 +34,6 @@ export default function FooterScene () {
         <p className="select-text text-xs font-medium text-950 sm:text-sm md:text-base">{name}</p>
         <p className="select-none text-[10px] text-700 sm:text-xs md:text-sm">Copyright © 2024. All rights reserved.</p>
       </span>
-
       <div className="flex w-full flex-col items-end justify-between gap-2 sm:w-fit">
         <span className="flex items-center justify-center gap-2 sm:gap-3 md:gap-5">
           {socials.map(s => (

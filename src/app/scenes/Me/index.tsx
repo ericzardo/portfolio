@@ -2,13 +2,13 @@
 
 import { useCallback, useState, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
+import dynamic from 'next/dynamic'
 
 import { Social } from '@typess/types'
 
-import TagText from '@components/layout/TagText'
-import Apresentation from '@components/@me/Apresentation'
-import Gallery from '@components/@me/Gallery'
-import { ScrollAnimation } from './Animation'
+const TagText = dynamic(() => import('@components/layout/TagText'))
+const Apresentation = dynamic(() => import('@components/@me/Apresentation'))
+const Gallery = dynamic(() => import('@components/@me/Gallery'))
 
 import portfolio from '@portfolio'
 
@@ -25,11 +25,16 @@ export default function MeScene() {
   }, [])
 
   useGSAP(() => {
-    if (!containerRef.current || !titleRef.current) return
+    const loadAnimation = async () => {
+      if (!containerRef.current || !titleRef.current) return
 
-    ScrollAnimation(containerRef.current, titleRef.current)
+      const { ScrollAnimation } = await import('./Animation')
+      ScrollAnimation(containerRef.current, titleRef.current)
+    }
+
+    loadAnimation()
   }, {
-    scope: containerRef
+    scope: containerRef,
   })
 
   return (
@@ -48,7 +53,6 @@ export default function MeScene() {
             handleGallery={handleGallery}
           />
         </div>
-        
       </section>
 
       {isGalleryOpen && (

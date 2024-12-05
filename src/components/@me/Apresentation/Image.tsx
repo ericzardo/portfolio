@@ -1,7 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 'use client'
 
 import { useCallback } from 'react'
+
+import Image from 'next/image'
 import { ImageHover, ImageHoverOut } from './Animations'
 
 interface ApresentationImageProps {
@@ -24,12 +25,16 @@ export default function ApresentationImage ({ handleGallery, name }: Apresentati
         onClick={handleGallery}
         onMouseEnter={handleImageHover}
         onMouseLeave={handleImageHoverOut}
-        className="w-full max-w-[300px] shrink-0 cursor-pointer select-none overflow-hidden rounded-xl bg-cover bg-center shadow-shadow transition-all duration-300 ease-out hover:shadow-blue md:max-w-[350px]"
+        className="relative size-full max-h-[300px] max-w-[300px] shrink-0 cursor-pointer select-none overflow-hidden rounded-xl bg-cover bg-center shadow-shadow transition-all duration-300 ease-out hover:shadow-blue md:max-w-[350px]"
       >
-        <img
-          src="/me.jpg"
-          alt={`${name}'s photo apresentation. Hi there!`}
-          className="size-full" />
+        <Image
+          src="/me.webp"
+          alt={`${name}'s photo presentation. Hi there!`}
+          style={{ objectFit: 'cover' }}
+          layout="responsive"
+          width={500}
+          height={500}
+        />
       </div>
   )
 }

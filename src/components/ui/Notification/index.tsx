@@ -1,7 +1,7 @@
 'use client'
 
 import { createPortal } from 'react-dom'
-import { useRef } from 'react'
+import { useRef, memo } from 'react'
 import { useGSAP } from '@gsap/react'
 
 import { CircleAlert, CircleCheckBig } from 'lucide-react'
@@ -13,7 +13,7 @@ interface NotificationProps {
   onClose: () => void;
 }
 
-export default function Notification({ message, error, onClose }: NotificationProps) {
+function Notification({ message, error, onClose }: NotificationProps) {
 
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -48,3 +48,5 @@ export default function Notification({ message, error, onClose }: NotificationPr
     document.body
   )
 }
+
+export default memo(Notification)

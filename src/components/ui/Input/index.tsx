@@ -5,11 +5,13 @@ import {
   useRef,
   useCallback,
   RefObject,
+  memo
 } from 'react'
+import dynamic from 'next/dynamic'
 
-import TextArea from './TextArea'
-import TextInput from './Input'
-import IconLabel from './IconLabel'
+const TextArea = dynamic(() => import('./TextArea'))
+const TextInput = dynamic(() => import('./Input'))
+const IconLabel = dynamic(() => import('./IconLabel'))
 
 type InputPropsType = InputHTMLAttributes<HTMLInputElement>;
 type TextareaPropsType = TextareaHTMLAttributes<HTMLTextAreaElement>;
@@ -23,7 +25,7 @@ interface BaseProps {
 
 type InputProps = BaseProps & (InputPropsType | TextareaPropsType);
 
-export default function Input({
+function Input({
   icon,
   placeholder,
   error,
@@ -46,7 +48,6 @@ export default function Input({
       gap-2.5 overflow-hidden rounded-lg border border-200 bg-50 px-3 py-2 shadow-little transition-colors ease-in-out focus-within:border-400 md:px-4 md:py-3
       ${error ? 'border-l-error' : 'border-200'} ${area ? 'items-start' : 'items-center'}`}
     >
-      
       <IconLabel area={area}>{icon}</IconLabel>
       
       {area ? (
@@ -57,3 +58,5 @@ export default function Input({
     </div>
   )
 }
+
+export default memo(Input)

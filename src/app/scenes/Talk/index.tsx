@@ -3,9 +3,11 @@
 import { useState, useCallback, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 
-import TagText from '@components/layout/TagText'
-import Form from '@components/@talk/Form'
-import Notification from '@components/ui/Notification'
+import dynamic from 'next/dynamic'
+
+const TagText = dynamic(() => import('@components/layout/TagText'))
+const Form = dynamic(() => import('@components/@talk/Form'))
+const Notification = dynamic(() => import('@components/ui/Notification'))
 import { ScrollAnimation } from './Animations'
 
 import { Notification as NotificationType } from '@typess/types'
@@ -15,7 +17,7 @@ export default function TalkScene() {
     active: false,
     error: true,
     sended: false,
-    message: ''
+    message: '',
   })
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -28,10 +30,10 @@ export default function TalkScene() {
 
   useGSAP(() => {
     if (!containerRef.current || !titleRef.current || !modalRef.current) return
-    
+
     ScrollAnimation(containerRef.current, titleRef.current, modalRef.current)
   }, {
-    scope: containerRef
+    scope: containerRef,
   })
 
   return (
@@ -41,7 +43,12 @@ export default function TalkScene() {
     >
       <TagText ref={titleRef}>talk me</TagText>
 
-      <Form ref={modalRef} closeNotification={closeNotification} notification={notification} setNotification={setNotification} />
+      <Form
+        ref={modalRef}
+        closeNotification={closeNotification}
+        notification={notification}
+        setNotification={setNotification}
+      />
 
       {notification.active && (
         <Notification
@@ -50,7 +57,6 @@ export default function TalkScene() {
           onClose={closeNotification}
         />
       )}
-      
     </section>
   )
 }

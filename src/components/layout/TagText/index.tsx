@@ -1,13 +1,13 @@
 'use client'
 
-import { ReactNode, RefObject } from 'react'
+import { ReactNode, RefObject, memo } from 'react'
 
 interface TagTextProps {
   children: ReactNode;
   ref?: RefObject<HTMLDivElement>;
 }
 
-export default function TagText({ children, ref }: TagTextProps) {
+function TagText({ children, ref }: TagTextProps) {
   return (
     <div ref={ref} className="flex select-none items-center gap-4 text-[24px] leading-6 sm:text-xl md:text-2xl">
       <span className="tag-text text-600">&lt;</span>
@@ -16,3 +16,5 @@ export default function TagText({ children, ref }: TagTextProps) {
     </div>
   )
 }
+
+export default memo(TagText)

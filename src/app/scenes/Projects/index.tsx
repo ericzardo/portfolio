@@ -3,15 +3,17 @@
 import { useState, useCallback, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 
-import TagText from '@components/layout/TagText'
-import ProjectCard from '@components/@projects/Card'
-import Project from '@components/@projects/Project'
+import dynamic from 'next/dynamic'
+
+const TagText = dynamic(() => import('@components/layout/TagText'))
+const ProjectCard = dynamic(() => import('@components/@projects/Card'))
+const Project = dynamic(() => import('@components/@projects/Project'))
 import { ScrollAnimation } from './Animations'
 
 import portfolio from '@portfolio'
 import { Project as ProjectType } from '@typess/types'
 
-export default function ProjectsScene({}) {
+export default function ProjectsScene() {
   const { projects } = portfolio
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -36,7 +38,6 @@ export default function ProjectsScene({}) {
     scope: containerRef
   })
 
-
   return (
     <section
       ref={containerRef}
@@ -44,18 +45,15 @@ export default function ProjectsScene({}) {
     >
       <TagText ref={titleRef}>projects</TagText>
 
-
       <div ref={projectsRef} className="flex w-full justify-start gap-12 -translate-x-5 sm:gap-24 md:gap-32 lg:gap-40">
         {projects.map((p) => (
           <ProjectCard key={p.title} project={p as ProjectType} onClick={() => openProject(p as ProjectType)} />
         ))}
       </div>
 
-
       {selectedProject && (
         <Project project={selectedProject} closeProject={closeProject} />
       )}
-
     </section>
   )
 }

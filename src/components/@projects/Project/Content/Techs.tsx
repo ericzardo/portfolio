@@ -1,6 +1,8 @@
+import dynamic from 'next/dynamic'
+
 import { Tech } from '@typess/types'
 
-import IconCard from '@components/layout/IconCard'
+const IconCard = dynamic(() => import('@components/layout/IconCard'))
 
 interface ProjectTechsProps {
   techs: Tech[] | null

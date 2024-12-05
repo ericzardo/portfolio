@@ -1,13 +1,14 @@
-/* eslint-disable @next/next/no-img-element */
 'use cleint'
 
 import { createPortal } from 'react-dom'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, memo } from 'react'
 import { useGSAP } from '@gsap/react'
 import { useLenis } from '@studio-freight/react-lenis'
+import dynamic from 'next/dynamic'
+import Image from 'next/image'
 
 import { X } from 'lucide-react'
-import ProjectContent from './Content'
+const ProjectContent = dynamic(() => import('./Content'), { ssr: false })
 import { ProjectAnimation } from './Animations'
 
 import { Project as ProjectType } from '@typess/types'
@@ -17,7 +18,7 @@ interface ProjectProps {
   closeProject: () => void;
 }
 
-export default function Project ({ closeProject, project }: ProjectProps) {
+function Project ({ closeProject, project }: ProjectProps) {
   const lenis = useLenis()
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -57,10 +58,14 @@ export default function Project ({ closeProject, project }: ProjectProps) {
       <span className="flex size-full flex-col items-center justify-between gap-4 overflow-auto p-2 sm:gap-6 sm:p-3 md:flex-row md:gap-8 md:p-4 lg:gap-10 lg:p-5">
         <ProjectContent project={project} />
 
-        <div className="flex flex-1 select-none items-center justify-center overflow-hidden rounded-xl object-cover shadow-shadow">
-          <img
+        <div className="relative flex flex-1 select-none items-center justify-center overflow-hidden rounded-xl object-cover shadow-shadow">
+          <Image
             src={`/projects/${project.image}`}
             alt={`Background preview banner showcasing the ${project.title} project`}
+            style={{ objectFit: 'cover' }}
+            layout="responsive"
+            width={500}
+            height={500}
           />
         </div>
 
@@ -70,3 +75,5 @@ export default function Project ({ closeProject, project }: ProjectProps) {
     document.body
   )
 }
+
+export default memo(Project)

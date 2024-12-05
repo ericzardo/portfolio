@@ -1,13 +1,18 @@
+'use client'
+
+import { memo } from 'react'
+import dynamic from 'next/dynamic'
+
 import { SimpleIconName } from '@typess/types'
 
-import Icon from '@components/Icon'
+const Icon = dynamic(() => import('@components/Icon'))
 
 interface IconButtonProps {
   icon: SimpleIconName;
   onClick: () => void;
 }
 
-export default function IconButton({ icon, onClick }: IconButtonProps) {
+function IconButton({ icon, onClick }: IconButtonProps) {
   return (
     <div
       onClick={onClick}
@@ -17,3 +22,5 @@ export default function IconButton({ icon, onClick }: IconButtonProps) {
     </div>
   )
 }
+
+export default memo(IconButton)

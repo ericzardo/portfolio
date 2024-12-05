@@ -85,7 +85,7 @@
         "A chat application with real-time communication between users, containing private messages and group chats.",
         "The main objective is to provide an interactive environment so that users can connect and communicate on different topics of interest."
       ],
-      "image": "chatt.on.png",
+      "image": "chatt.on.webp",
       "techs": [
         {
           "name": "JavaScript",
@@ -153,7 +153,7 @@
         "An intuitive app for planning trips and organizing travel details.",
         "Select travel dates and destination, add attendees, and manage activities efficiently."
       ],
-      "image": "plann.er.png",
+      "image": "plann.er.webp",
       "techs": [
         {
           "name": "TypeScript",
@@ -191,7 +191,7 @@
         "Personal project developed with the goal of improving my daily personal activities.",
         "It had alarm and document management features."
       ],
-      "image": "routine.app.png",
+      "image": "routine.app.webp",
       "techs": [
         {
           "name": "Node.js",
@@ -241,7 +241,7 @@
         "The project aimed to create an attractive and functional landing page for the 'Mergulhe nas Profundezas do Conhecimento (Dive into the Depths of Knowledge)' e-book",
         "Its primary goal was to effectively communicate the essence of the e-book and persuade visitors to take action."
       ],
-      "image": "ebook.lp.png",
+      "image": "ebook.lp.webp",
       "techs": [
         {
           "name": "JavaScript",

@@ -2,8 +2,9 @@
 
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
+import dynamic from 'next/dynamic'
 
-import TagText from '@components/layout/TagText'
+const TagText = dynamic(() => import('@components/layout/TagText'))
 import { ScrollAnimation } from './Animations'
 
 import portfolio from '@portfolio'
@@ -17,16 +18,20 @@ export default function HeroScene() {
   const roleRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    if (!containerRef.current || !statusRef.current || !apresentationRef.current || !roleRef.current) return
+    const loadAnimation = async () => {
+      if (!containerRef.current || !statusRef.current || !apresentationRef.current || !roleRef.current) return
 
-    ScrollAnimation(
-      containerRef.current,
-      statusRef.current,
-      apresentationRef.current,
-      roleRef.current
-    )
+      ScrollAnimation(
+        containerRef.current,
+        statusRef.current,
+        apresentationRef.current,
+        roleRef.current
+      )
+    }
+
+    loadAnimation()
   }, {
-    scope: containerRef
+    scope: containerRef,
   })
 
   return (
@@ -45,10 +50,6 @@ export default function HeroScene() {
       </h1>
 
       <TagText ref={roleRef}>{role}</TagText>
-
-        
-
-      
     </section>
   )
 }

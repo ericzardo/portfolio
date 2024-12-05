@@ -1,5 +1,7 @@
 'use client'
 
+import { memo } from 'react'
+
 import { SimpleIconName } from '@typess/types'
 
 import Icon from '@components/Icon'
@@ -11,7 +13,7 @@ interface IconCardProps {
   small?: boolean;
 }
 
-export default function IconCard({ name, icon, onClick, small = false }: IconCardProps) {
+function IconCard({ name, icon, onClick, small = false }: IconCardProps) {
   return (
     <div
       onClick={onClick}
@@ -34,3 +36,5 @@ export default function IconCard({ name, icon, onClick, small = false }: IconCar
     </div>
   )
 }
+
+export default memo(IconCard)

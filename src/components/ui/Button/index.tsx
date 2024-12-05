@@ -1,9 +1,10 @@
 'use client'
 
-import { ButtonHTMLAttributes, ReactElement, useCallback, useState } from 'react'
+import { ButtonHTMLAttributes, ReactElement, useCallback, useState, memo } from 'react'
+import dynamic from 'next/dynamic'
 
-import IconLabel from './IconLabel'
 import { Loader } from 'lucide-react'
+const IconLabel = dynamic(() => import('./IconLabel'))
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;
@@ -11,7 +12,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon: ReactElement;
 }
 
-export default function Button({ icon, label, disabled, isLoading, ...props }: ButtonProps) {
+function Button({ icon, label, disabled, isLoading, ...props }: ButtonProps) {
   const [ effect, setEffect ] = useState<boolean>(false)
 
   const handleClick = useCallback(() => {
@@ -23,7 +24,7 @@ export default function Button({ icon, label, disabled, isLoading, ...props }: B
 
   return (
     <button
-    disabled={disabled || isLoading}
+      disabled={disabled || isLoading}
       onClick={handleClick}
       onAnimationEnd={handleAnimationEnd}
       className={`
@@ -48,3 +49,5 @@ export default function Button({ icon, label, disabled, isLoading, ...props }: B
     </button>
   )
 }
+
+export default memo(Button)

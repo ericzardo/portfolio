@@ -1,24 +1,26 @@
-import { RefObject, useCallback, useEffect, useState } from 'react'
-import { useForm } from 'react-hook-form'
+'use client'
+
+import dynamic from 'next/dynamic'
+import { memo, useCallback, useEffect, useState } from 'react'
+import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Controller } from 'react-hook-form'
 
 import { User, AtSign, Pencil, ArrowRight } from 'lucide-react'
-import Input from '@components/ui/Input'
-import Button from '@components/ui/Button'
 
 import { schema, FormData } from '@schemas/talk'
-
 import { Notification } from '@typess/types'
+
+const Input = dynamic(() => import('@components/ui/Input'), { ssr: false })
+const Button = dynamic(() => import('@components/ui/Button'), { ssr: false })
 
 interface FormProps {
   setNotification: (notification: Notification) => void;
   notification: Notification;
   closeNotification: () => void;
-  ref: RefObject<HTMLDivElement>
+  ref: React.RefObject<HTMLDivElement>
 }
 
-export default function Form({ setNotification, notification, closeNotification, ref }: FormProps) {
+function FormComponent({ setNotification, notification, closeNotification, ref }: FormProps) {
   const {
     handleSubmit,
     control,
@@ -53,7 +55,7 @@ export default function Form({ setNotification, notification, closeNotification,
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data),
         })
-  
+
         if (!response.ok) {
           throw new Error('Failed to send message.')
         }
@@ -98,19 +100,19 @@ export default function Form({ setNotification, notification, closeNotification,
       return () => clearTimeout(timer)
     }
   }, [ notification.active, closeNotification ])
-  
+
   return (
-      <div
-        ref={ref}
-        className="my-10 max-w-[700px] rounded-lg bg-gradient-to-r from-50 from-30% to-transparent px-7 py-3 shadow-shadow sm:px-8 sm:py-3.5 md:px-9 md:py-4 lg:px-10 lg:py-5"
+    <div
+      ref={ref}
+      className="my-10 max-w-[700px] rounded-lg bg-gradient-to-r from-50 from-30% to-transparent px-7 py-3 shadow-shadow sm:px-8 sm:py-3.5 md:px-9 md:py-4 lg:px-10 lg:py-5"
+    >
+      <form
+        onSubmit={handleSubmit(submitTalk)}
+        className="flex w-full max-w-[400px] flex-col items-end gap-4 py-8 sm:py-9 md:py-10"
+        onMouseMove={handleUserInteraction}
+        onKeyDown={handleUserInteraction}
+        onFocus={handleUserInteraction}
       >
-        <form
-          onSubmit={handleSubmit(submitTalk)}
-          className="flex w-full max-w-[400px] flex-col items-end gap-4 py-8 sm:py-9 md:py-10"
-          onMouseMove={handleUserInteraction}
-          onKeyDown={handleUserInteraction}
-          onFocus={handleUserInteraction}
-        >
         <Controller
           name="name"
           control={control}
@@ -120,7 +122,6 @@ export default function Form({ setNotification, notification, closeNotification,
               icon={<User />}
               placeholder="Your Name"
               error={errors.name?.message}
-
               onChange={onChange}
               onBlur={onBlur}
               value={value}
@@ -136,7 +137,6 @@ export default function Form({ setNotification, notification, closeNotification,
               icon={<AtSign />}
               placeholder="Your Email"
               error={errors.email?.message}
-              
               onChange={onChange}
               onBlur={onBlur}
               value={value}
@@ -153,11 +153,9 @@ export default function Form({ setNotification, notification, closeNotification,
               icon={<Pencil />}
               placeholder="Message here..."
               error={errors.message?.message}
-
               onChange={onChange}
               onBlur={onBlur}
               value={value}
-
               area
             />
           )}
@@ -170,9 +168,9 @@ export default function Form({ setNotification, notification, closeNotification,
           disabled={notification.sended}
           isLoading={isSubmitting}
         />
-        </form>
-
-      </div>
-      
+      </form>
+    </div>
   )
 }
+
+export default memo(FormComponent)

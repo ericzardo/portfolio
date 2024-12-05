@@ -2,8 +2,12 @@
 
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
+import dynamic from 'next/dynamic'
 
-import Quote from '@components/@quote'
+// Importação dinâmica para o componente estático
+const Quote = dynamic(() => import('@components/@quote'))
+
+// Importação padrão para ScrollAnimation
 import { ScrollAnimation } from './Animations'
 
 import portfolio from '@portfolio'
@@ -21,20 +25,16 @@ export default function QuoteScene() {
     scope: containerRef
   })
 
-  if (!quote) return
+  if (!quote) return null
 
   return (
     <section
       ref={containerRef}
       className="flex min-h-dvh w-full flex-col justify-center gap-3 px-4 sm:px-8 md:px-16 lg:px-24 xl:px-48"
     >
-        <span className="flex items-center justify-center">
-
-          <Quote author={quote.author} phrase={quote.phrase} />
-
-        </span>
-      
-
-    </section> 
+      <span className="flex items-center justify-center">
+        <Quote author={quote.author} phrase={quote.phrase} />
+      </span>
+    </section>
   )
 }
