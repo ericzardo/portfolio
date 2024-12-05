@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use cleint'
 
+import { createPortal } from 'react-dom'
 import { useRef, useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import { useLenis } from '@studio-freight/react-lenis'
@@ -41,7 +42,7 @@ export default function Project ({ closeProject, project }: ProjectProps) {
     scope: containerRef
   })
 
-  return (
+  return createPortal(
     <div
       ref={containerRef}
       className="fixed inset-2 z-50 flex items-center justify-between gap-2 overflow-hidden rounded-xl bg-100 p-2 shadow-shadow sm:inset-3 sm:p-3 md:inset-4 md:p-4 lg:inset-5 lg:p-5"
@@ -65,6 +66,7 @@ export default function Project ({ closeProject, project }: ProjectProps) {
 
       </span>
       
-    </div>
+    </div>,
+    document.body
   )
 }

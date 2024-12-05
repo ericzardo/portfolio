@@ -1,6 +1,6 @@
 'use client'
 
-import ReactDOM from 'react-dom'
+import { createPortal } from 'react-dom'
 import { useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 
@@ -25,7 +25,7 @@ export default function Notification({ message, error, onClose }: NotificationPr
     scope: containerRef
   })
 
-  return ReactDOM.createPortal(
+  return createPortal(
     <div
       id='notification'
       className="pointer-events-none fixed inset-0 z-50 flex items-start justify-end bg-transparent p-10"
