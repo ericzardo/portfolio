@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useRef } from 'react'
+import { memo, useCallback, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import dynamic from 'next/dynamic'
 
@@ -13,7 +13,7 @@ import { ScrollAnimation } from './Animations'
 import portfolio from '@portfolio'
 
 
-export default function FooterScene() {
+function FooterScene() {
   const { name, socials } = portfolio
   const containerRef = useRef<HTMLDivElement>(null)
 
@@ -47,3 +47,5 @@ export default function FooterScene() {
     </div>
   )
 }
+
+export default memo(FooterScene)

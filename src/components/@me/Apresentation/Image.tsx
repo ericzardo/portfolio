@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback } from 'react'
+import { memo, useCallback } from 'react'
 
 import Image from 'next/image'
 import { ImageHover, ImageHoverOut } from './Animations'
@@ -10,7 +10,7 @@ interface ApresentationImageProps {
   name: string;
 }
 
-export default function ApresentationImage ({ handleGallery, name }: ApresentationImageProps) {
+function ApresentationImage ({ handleGallery, name }: ApresentationImageProps) {
   const handleImageHover = useCallback(() => {
     ImageHover()
   }, [])
@@ -38,3 +38,5 @@ export default function ApresentationImage ({ handleGallery, name }: Apresentati
       </div>
   )
 }
+
+export default memo(ApresentationImage)

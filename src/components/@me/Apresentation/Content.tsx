@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback } from 'react'
+import { memo, useCallback } from 'react'
 import dynamic from 'next/dynamic'
 
 const IconCard = dynamic(() => import('@components/layout/IconCard'), { ssr: false })
@@ -12,7 +12,7 @@ interface ApresentationContentProps {
   socials: Social[];
 }
 
-export default function ApresentationContent({ about, socials }: ApresentationContentProps) {
+function ApresentationContent({ about, socials }: ApresentationContentProps) {
   const openSocial = useCallback((url: string) => {
     window.open(url, '_blank')
   }, [])
@@ -40,3 +40,5 @@ export default function ApresentationContent({ about, socials }: ApresentationCo
     </div>
   )
 }
+
+export default memo(ApresentationContent)

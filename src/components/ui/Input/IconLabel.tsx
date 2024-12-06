@@ -1,11 +1,11 @@
-import { ReactElement, cloneElement } from 'react'
+import { ReactElement, cloneElement, memo } from 'react'
 
 interface IconLabelProps {
   children: ReactElement;
   area: boolean;
 }
 
-export default function IconLabel ({ children, area }: IconLabelProps) {
+function IconLabel ({ children, area }: IconLabelProps) {
   return (
     <span className={`flex items-center justify-center ${area ? 'pt-1.5 sm:pt-1' : 'p-0'}`}>
       {cloneElement(children, {
@@ -14,3 +14,5 @@ export default function IconLabel ({ children, area }: IconLabelProps) {
     </span>
   )
 }
+
+export default memo(IconLabel)

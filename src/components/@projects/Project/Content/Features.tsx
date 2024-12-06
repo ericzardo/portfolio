@@ -1,8 +1,10 @@
+import { memo } from 'react'
+
 interface ProjectFeaturesProps {
   features: string[] | null
 }
 
-export default function ProjectFeatures ({ features }: ProjectFeaturesProps) {
+function ProjectFeatures ({ features }: ProjectFeaturesProps) {
 
   if (!features || features.length <= 0) return
 
@@ -20,3 +22,5 @@ export default function ProjectFeatures ({ features }: ProjectFeaturesProps) {
     </span>
   )
 }
+
+export default memo(ProjectFeatures)

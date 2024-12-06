@@ -9,7 +9,7 @@ export const ScrollAnimation = (container: HTMLDivElement) => {
     end: '+=100%',
     pin: true,
     markers: false,
-    scrub: true,
+    scrub: 1.6,
     anticipatePin: 0.2
   })
 
@@ -18,7 +18,7 @@ export const ScrollAnimation = (container: HTMLDivElement) => {
       trigger: container,
       start: 'top top',
       end: '+=100%',
-      scrub: true,
+      scrub: 1.6,
     },
   })
 

@@ -1,6 +1,7 @@
 import { Quote } from '@typess/types'
+import { memo } from 'react'
 
-export default function QuotePhrase ({ phrase, author }: Quote) {
+function QuotePhrase ({ phrase, author }: Quote) {
   return (
     <>
       <span className="relative z-10 flex flex-col">
@@ -11,3 +12,5 @@ export default function QuotePhrase ({ phrase, author }: Quote) {
     </>
   )
 }
+
+export default memo(QuotePhrase)

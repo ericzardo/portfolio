@@ -1,9 +1,9 @@
 'use client'
 
-import dynamic from 'next/dynamic'
 import { memo, useCallback, useEffect, useState } from 'react'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import dynamic from 'next/dynamic'
 
 import { User, AtSign, Pencil, ArrowRight } from 'lucide-react'
 

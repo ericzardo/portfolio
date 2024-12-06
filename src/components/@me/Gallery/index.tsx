@@ -1,6 +1,6 @@
 'use cleint'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, memo } from 'react'
 import { useGSAP } from '@gsap/react'
 import { useLenis } from '@studio-freight/react-lenis'
 
@@ -11,7 +11,7 @@ interface GalleryProps {
   handleGallery: () => void;
 }
 
-export default function Gallery ({ handleGallery }: GalleryProps) {
+function Gallery ({ handleGallery }: GalleryProps) {
   const lenis = useLenis()
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -54,3 +54,5 @@ export default function Gallery ({ handleGallery }: GalleryProps) {
     </div>
   )
 }
+
+export default memo(Gallery)

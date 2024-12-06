@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { memo, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import dynamic from 'next/dynamic'
 
@@ -9,7 +9,7 @@ import { ScrollAnimation } from './Animations'
 
 import portfolio from '@portfolio'
 
-export default function HeroScene() {
+function HeroScene() {
   const { name, role } = portfolio
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -53,3 +53,5 @@ export default function HeroScene() {
     </section>
   )
 }
+
+export default memo(HeroScene)

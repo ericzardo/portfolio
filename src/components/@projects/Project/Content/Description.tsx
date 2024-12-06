@@ -1,8 +1,10 @@
+import { memo } from 'react'
+
 interface ProjectDescriptionProps {
   descriptions: string[]
 }
 
-export default function ProjectDescription ({ descriptions }: ProjectDescriptionProps) {
+function ProjectDescription ({ descriptions }: ProjectDescriptionProps) {
 
   if (!descriptions || descriptions.length <= 0) return
   
@@ -15,3 +17,5 @@ export default function ProjectDescription ({ descriptions }: ProjectDescription
     </span>
   )
 }
+
+export default memo(ProjectDescription)

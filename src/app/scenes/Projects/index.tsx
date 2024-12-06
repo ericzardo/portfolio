@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, memo } from 'react'
 import { useGSAP } from '@gsap/react'
 
 import dynamic from 'next/dynamic'
@@ -13,7 +13,7 @@ import { ScrollAnimation } from './Animations'
 import portfolio from '@portfolio'
 import { Project as ProjectType } from '@typess/types'
 
-export default function ProjectsScene() {
+function ProjectsScene() {
   const { projects } = portfolio
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -57,3 +57,5 @@ export default function ProjectsScene() {
     </section>
   )
 }
+
+export default memo(ProjectsScene)

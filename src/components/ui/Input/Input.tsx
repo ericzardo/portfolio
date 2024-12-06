@@ -1,11 +1,11 @@
-import { RefObject } from 'react'
+import { memo, RefObject } from 'react'
 
 interface TextInputProps {
   ref: RefObject<HTMLInputElement>;
   placeholder: string;
 }
 
-export default function TextInput ({ ref, placeholder, ...props }: TextInputProps) {
+function TextInput ({ ref, placeholder, ...props }: TextInputProps) {
   return (
     <input
       ref={ref}
@@ -16,3 +16,5 @@ export default function TextInput ({ ref, placeholder, ...props }: TextInputProp
     />
   )
 }
+
+export default memo(TextInput)

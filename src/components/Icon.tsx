@@ -1,4 +1,4 @@
-import { ComponentType, SVGProps } from 'react'
+import { ComponentType, memo, SVGProps } from 'react'
 
 import * as Icons from '@icons-pack/react-simple-icons'
 
@@ -10,8 +10,10 @@ interface IconProps {
   className: string;
 }
 
-export default function Icon({ name, className }: IconProps) {
+function Icon({ name, className }: IconProps) {
   const SimpleIcon = Icons[name] as ComponentType<SVGProps<SVGSVGElement>>
 
   return <SimpleIcon className={className} />
 }
+
+export default memo(Icon)

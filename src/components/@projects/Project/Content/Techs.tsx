@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import dynamic from 'next/dynamic'
 
 import { Tech } from '@typess/types'
@@ -8,7 +9,7 @@ interface ProjectTechsProps {
   techs: Tech[] | null
 }
 
-export default function ProjectTechs ({ techs }: ProjectTechsProps) {
+function ProjectTechs ({ techs }: ProjectTechsProps) {
   if (!techs || techs.length <= 0) return
 
   return (
@@ -22,3 +23,5 @@ export default function ProjectTechs ({ techs }: ProjectTechsProps) {
     </span>
   )
 }
+
+export default memo(ProjectTechs)

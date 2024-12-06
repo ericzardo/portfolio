@@ -10,7 +10,7 @@ export const ScrollAnimation = (container: HTMLDivElement, status: HTMLDivElemen
         trigger: container,
         start: 'top top',
         end: 'bottom 60%',
-        scrub: true,
+        scrub: 1.6,
         markers: false,
       },
     }
@@ -25,7 +25,7 @@ export const ScrollAnimation = (container: HTMLDivElement, status: HTMLDivElemen
         trigger: container,
         start: 'top top',
         end: '110% 60%',
-        scrub: true,
+        scrub: 1.6,
         markers: false,
       },
     }
@@ -40,7 +40,7 @@ export const ScrollAnimation = (container: HTMLDivElement, status: HTMLDivElemen
         trigger: container,
         start: 'top top',
         end: '120% 60%',
-        scrub: true,
+        scrub: 1.6,
         markers: false,
       },
     }

@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { memo, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import dynamic from 'next/dynamic'
 
@@ -12,7 +12,7 @@ import { ScrollAnimation } from './Animations'
 
 import portfolio from '@portfolio'
 
-export default function QuoteScene() {
+function QuoteScene() {
   const { quote } = portfolio
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -38,3 +38,5 @@ export default function QuoteScene() {
     </section>
   )
 }
+
+export default memo(QuoteScene)

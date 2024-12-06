@@ -5,7 +5,7 @@ export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement
     trigger: container,
     start: '-20% 40%',
     end: '110% 60%',
-    scrub: true,
+    scrub: 1.6,
     markers: false,
   }
 

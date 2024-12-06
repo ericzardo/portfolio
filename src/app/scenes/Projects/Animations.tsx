@@ -12,7 +12,7 @@ export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement
         trigger: container,
         start: '-110% 40%',
         end: '110% 60%',
-        scrub: true,
+        scrub: 1.6,
         markers: false,
       }
     }
@@ -36,7 +36,7 @@ export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement
       end: () => `+=${totalWidth + window.innerHeight}`,
       pin: true,
       snap: 1 / (cards.length - 1),
-      scrub: true,
+      scrub: 1.6,
       markers: false,
       anticipatePin: 0.2,
       id: 'project-cards-trigger',
@@ -48,7 +48,7 @@ export const ScrollAnimation = (container: HTMLDivElement, title: HTMLDivElement
   //     trigger: container,
   //     start: 'top top',
   //     end: () => `+=${totalWidth + window.innerHeight}`,
-  //     scrub: true,
+  //     scrub: 1.6,
   //     markers: false,
   //   },
   // })

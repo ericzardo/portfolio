@@ -4,7 +4,7 @@ import { ButtonHTMLAttributes, ReactElement, useCallback, useState, memo } from 
 import dynamic from 'next/dynamic'
 
 import { Loader } from 'lucide-react'
-const IconLabel = dynamic(() => import('./IconLabel'))
+const IconLabel = dynamic(() => import('./IconLabel'), { ssr: false })
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   label: string;

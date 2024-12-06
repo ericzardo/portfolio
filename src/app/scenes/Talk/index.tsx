@@ -1,8 +1,7 @@
 'use client'
 
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, memo } from 'react'
 import { useGSAP } from '@gsap/react'
-
 import dynamic from 'next/dynamic'
 
 const TagText = dynamic(() => import('@components/layout/TagText'))
@@ -12,7 +11,7 @@ import { ScrollAnimation } from './Animations'
 
 import { Notification as NotificationType } from '@typess/types'
 
-export default function TalkScene() {
+function TalkScene() {
   const [ notification, setNotification ] = useState<NotificationType>({
     active: false,
     error: true,
@@ -60,3 +59,5 @@ export default function TalkScene() {
     </section>
   )
 }
+
+export default memo(TalkScene)

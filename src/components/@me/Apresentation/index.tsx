@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 'use client'
 
+import { memo } from 'react'
 import dynamic from 'next/dynamic'
 
 const ApresentationContent = dynamic(() => import('./Content'), { ssr: false })
@@ -15,7 +16,7 @@ interface ApresentationProps {
   handleGallery: () => void;
 }
 
-export default function Apresentation({ name, about, socials, handleGallery }: ApresentationProps) {
+function Apresentation({ name, about, socials, handleGallery }: ApresentationProps) {
   return (
     <div
       id="me-modal"
@@ -26,3 +27,5 @@ export default function Apresentation({ name, about, socials, handleGallery }: A
     </div>
   )
 }
+
+export default memo(Apresentation)

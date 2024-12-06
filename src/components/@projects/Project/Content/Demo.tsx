@@ -3,12 +3,13 @@ import Link from 'next/link'
 import { Eye, GitBranch } from 'lucide-react'
 
 import { Demo } from '@typess/types'
+import { memo } from 'react'
 
 interface ProjectDemoProps {
   demo: Demo | null;
 }
 
-export default function ProjectDemo ({ demo }: ProjectDemoProps) {
+function ProjectDemo ({ demo }: ProjectDemoProps) {
   if (!demo) return
 
   const { repository, preview } = demo
@@ -48,3 +49,5 @@ export default function ProjectDemo ({ demo }: ProjectDemoProps) {
     </span>
   )
 }
+
+export default memo(ProjectDemo)

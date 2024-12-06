@@ -1,11 +1,11 @@
-import { useCallback, RefObject, useEffect } from 'react'
+import { useCallback, RefObject, useEffect, memo } from 'react'
 
 interface TextAreaProps {
   ref: RefObject<HTMLTextAreaElement>;
   placeholder: string;
 }
 
-export default function TextArea({ ref, placeholder, ...props }: TextAreaProps) {
+function TextArea({ ref, placeholder, ...props }: TextAreaProps) {
 
   const handleTextareaResize = useCallback(() => {
     const textarea = ref.current as HTMLTextAreaElement
@@ -31,3 +31,5 @@ export default function TextArea({ ref, placeholder, ...props }: TextAreaProps) 
     />
   )
 }
+
+export default memo(TextArea)

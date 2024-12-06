@@ -1,8 +1,10 @@
+import { memo } from 'react'
+
 interface ProjectNoteProps {
   note: string | null;
 }
 
-export default function ProjectNote ({ note }: ProjectNoteProps) {
+function ProjectNote ({ note }: ProjectNoteProps) {
   if (!note) return
 
   return (
@@ -12,3 +14,5 @@ export default function ProjectNote ({ note }: ProjectNoteProps) {
     </span>
   )
 }
+
+export default memo(ProjectNote)

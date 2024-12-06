@@ -1,6 +1,6 @@
 'use client'
 
-import { useCallback, useState, useRef } from 'react'
+import { useCallback, useState, useRef, memo } from 'react'
 import { useGSAP } from '@gsap/react'
 import dynamic from 'next/dynamic'
 
@@ -12,7 +12,7 @@ const Gallery = dynamic(() => import('@components/@me/Gallery'))
 
 import portfolio from '@portfolio'
 
-export default function MeScene() {
+function MeScene() {
   const { name, about, socials } = portfolio
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -61,3 +61,5 @@ export default function MeScene() {
     </>
   )
 }
+
+export default memo(MeScene)

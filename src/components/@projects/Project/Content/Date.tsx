@@ -1,10 +1,11 @@
 import { Date } from '@typess/types'
+import { memo } from 'react'
 
 interface ProjectDateProps {
   date: Date | null;
 }
 
-export default function ProjectDate ({ date }: ProjectDateProps) {
+function ProjectDate ({ date }: ProjectDateProps) {
   if (!date) return
 
   const { from, to } = date
@@ -29,3 +30,5 @@ export default function ProjectDate ({ date }: ProjectDateProps) {
     </span>
   )
 }
+
+export default memo(ProjectDate)

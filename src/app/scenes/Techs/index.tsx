@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { memo, useRef } from 'react'
 import { useGSAP } from '@gsap/react'
 import dynamic from 'next/dynamic'
 
@@ -12,7 +12,7 @@ import portfolio from '@portfolio'
 
 import { SimpleIconName } from '@typess/types'
 
-export default function TechsScene() {
+function TechsScene() {
   const { techs } = portfolio
 
   const containerRef = useRef<HTMLDivElement>(null)
@@ -48,3 +48,5 @@ export default function TechsScene() {
     </section>
   )
 }
+
+export default memo(TechsScene)
