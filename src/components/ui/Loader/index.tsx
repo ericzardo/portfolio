@@ -10,14 +10,15 @@ const Loader = () => {
   const barRef = useRef<HTMLSpanElement>(null)
 
   const [ loading, setLoading ] = useState(true)
+  const [ duration ] = useState(1000)
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
-    }, 2000)
+    }, duration)
 
     return () => clearTimeout(timer)
-  }, [])
+  }, [ duration ])
 
   useGSAP(() => {
     if (!barRef.current) return
