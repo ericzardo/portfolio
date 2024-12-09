@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/next-script-for-ga */
 import type { Metadata } from 'next'
 import { Comfortaa } from 'next/font/google'
 import { ReactNode } from 'react'
-import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import Loader from '@components/ui/Loader'
 
@@ -76,17 +76,18 @@ export default function RootLayout({
             __html: JSON.stringify(schema),
           }}
         />
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=G-KBJWQE1CZE"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          >
-          </iframe>
-        </noscript>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KBJWQE1CZE"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-KBJWQE1CZE');
+            `,
+          }}
+        />
       </head>
-      <GoogleAnalytics gaId='G-KBJWQE1CZE' />
       <body className={`${comfortaa.className} relative w-screen overflow-x-hidden antialiased`}>
         <Loader />
         <div id='background'></div>
