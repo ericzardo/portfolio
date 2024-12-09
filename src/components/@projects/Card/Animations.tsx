@@ -31,6 +31,5 @@ export const onHoverOut = (e: MouseEvent<HTMLDivElement>) => {
     rotateY: -40,
     rotateX: 10,
     rotateZ: 2,
-    duration: 0.8,
   })
 }

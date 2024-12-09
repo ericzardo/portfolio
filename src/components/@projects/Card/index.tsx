@@ -26,7 +26,7 @@ function ProjectCard({ project, onClick }: ProjectCardProps) {
       className="project-card relative size-[300px] flex-none [perspective:2000px] [transform-style:preserve-3d] [transform:translateX(50px)_translateY(20px)_translateZ(-10px)] 
         before:pointer-events-none before:absolute before:-inset-2 
         before:rounded-xl before:border before:border-gray-500 before:content-[''] 
-        before:[transform:translateZ(-20px)] hover:cursor-pointer 
+        before:[transform:translateZ(-20px)] hover:cursor-not-allowed 
         md:size-[350px] lg:size-[400px]"
     >
       <div className="absolute inset-0 size-full rounded-xl shadow-shadow [transform-style:preserve-3d]">
