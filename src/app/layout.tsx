@@ -4,6 +4,7 @@ import { Comfortaa } from 'next/font/google'
 import { ReactNode } from 'react'
 import './globals.css'
 import Loader from '@components/ui/Loader'
+import { Analytics } from '@scripts/Analytics'
 
 const comfortaa = Comfortaa({ subsets: [ 'latin' ] })
 
@@ -76,19 +77,9 @@ export default function RootLayout({
             __html: JSON.stringify(schema),
           }}
         />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-KBJWQE1CZE"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-KBJWQE1CZE');
-            `,
-          }}
-        />
       </head>
       <body className={`${comfortaa.className} relative w-screen overflow-x-hidden antialiased`}>
+        <Analytics />
         <Loader />
         <div id='background'></div>
         {children}
