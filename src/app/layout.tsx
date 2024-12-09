@@ -76,6 +76,15 @@ export default function RootLayout({
             __html: JSON.stringify(schema),
           }}
         />
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=G-KBJWQE1CZE"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          >
+          </iframe>
+        </noscript>
       </head>
       <GoogleAnalytics gaId='G-KBJWQE1CZE' />
       <body className={`${comfortaa.className} relative w-screen overflow-x-hidden antialiased`}>
