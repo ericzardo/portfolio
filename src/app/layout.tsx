@@ -1,8 +1,7 @@
-/* eslint-disable @next/next/no-img-element */
-
 import type { Metadata } from 'next'
 import { Comfortaa } from 'next/font/google'
 import { ReactNode } from 'react'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import './globals.css'
 import Loader from '@components/ui/Loader'
 
@@ -67,6 +66,7 @@ export default function RootLayout({
     'jobTitle': 'Web Developer',  
     'mainEntityOfPage': 'https://zardo.mentesmart.com.br'
   }
+
   return (
     <html lang="en">
       <head>
@@ -77,6 +77,7 @@ export default function RootLayout({
           }}
         />
       </head>
+      <GoogleAnalytics gaId='G-JH29YQ1HXL' />
       <body className={`${comfortaa.className} relative w-screen overflow-x-hidden antialiased`}>
         <Loader />
         <div id='background'></div>
