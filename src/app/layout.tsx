@@ -77,7 +77,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <GoogleAnalytics gaId='G-JH29YQ1HXL' />
+      <GoogleAnalytics gaId='G-KBJWQE1CZE' />
       <body className={`${comfortaa.className} relative w-screen overflow-x-hidden antialiased`}>
         <Loader />
         <div id='background'></div>
